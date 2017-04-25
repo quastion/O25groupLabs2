@@ -12,6 +12,14 @@ public class Frame {
     private String theme;
     private int idFilm;
 
+    public Frame(int idFrame, Date dateFrame, String placeFrame, String theme, int idFilm) {
+        this.idFrame = idFrame;
+        this.dateFrame = dateFrame;
+        this.placeFrame = placeFrame;
+        this.theme = theme;
+        this.idFilm = idFilm;
+    }
+
     public int getIdFrame() {
         return idFrame;
     }

@@ -9,6 +9,13 @@ public class Member {
     private String name;
     private String middleName;
 
+    public Member(int idMember, String surname, String name, String middleName) {
+        this.idMember = idMember;
+        this.surname = surname;
+        this.name = name;
+        this.middleName = middleName;
+    }
+
     public int getIdMember() {
         return idMember;
     }
