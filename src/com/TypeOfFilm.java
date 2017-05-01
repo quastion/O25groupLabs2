@@ -7,6 +7,11 @@ public class TypeOfFilm {
     private int idTypeOfFilm;
     private String typeFilm;
 
+    public TypeOfFilm(int idTypeOfFilm, String typeFilm) {
+        this.idTypeOfFilm = idTypeOfFilm;
+        this.typeFilm = typeFilm;
+    }
+
     public int getIdTypeOfFilm() {
         return idTypeOfFilm;
     }

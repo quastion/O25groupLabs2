@@ -15,6 +15,11 @@ public class Member {
         this.name = name;
         this.middleName = middleName;
     }
+    public Member(String surname, String name, String middleName) {
+        this.surname = surname;
+        this.name = name;
+        this.middleName = middleName;
+    }
 
     public int getIdMember() {
         return idMember;

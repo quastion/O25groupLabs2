@@ -30,15 +30,25 @@ public class FilmDAO extends DAO {
             return films;
         }
     }
+    public static List<TypeOfFilm> getTypeOfFilm() throws SQLException, ClassNotFoundException {
+        try( ResultSet rs = FilmDAO.getConnection().createStatement().executeQuery("SELECT * from TYPEOFFILM") ){
+            ArrayList<TypeOfFilm> typeOfFilms = new ArrayList<>();
+            while (rs.next()){
+                typeOfFilms.add(new TypeOfFilm( rs.getInt(1), rs.getString(2) ));
+                System.out.println(rs.getInt(1)+" "+ rs.getString(2));
+            }
+            return typeOfFilms;
+        }
+    }
     public static void deleteFilm(int id)throws SQLException, ClassNotFoundException{
-        try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from FILM WHERE ifFilm = ?") ){
+        try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from FILM WHERE id_Film = ?") ){
             prepareStatement.setInt(1, id);
             prepareStatement.executeUpdate();
         }
     }
     public static void addFilm(Film film)throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = FilmDAO.getConnection().
-                prepareStatement("INSERT INTO FILM VALUES (null, ?, ?, ?, ?, ?, ?, ?, 1005);") ){
+                prepareStatement("INSERT INTO FILM VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)") ){
             //INSERT INTO FILM VALUES (null, 22, 33, 44, TO_DATE('11-12-2000'), TO_DATE('11-12-2000'), 'ТОльятти','ТОльятти', 1005);
             prepareStatement.setInt(1, film.getPriceFilm());
             prepareStatement.setInt(2, film.getSensibility());
@@ -47,6 +57,7 @@ public class FilmDAO extends DAO {
             prepareStatement.setDate(5, film.getDateManifestation());
             prepareStatement.setString(6, film.getPlaceManifestation());
             prepareStatement.setString(7, film.getPlaceStorage());
+            prepareStatement.setInt(8, film.getIdTypeOfFilm());
             prepareStatement.executeUpdate();
         }
     }

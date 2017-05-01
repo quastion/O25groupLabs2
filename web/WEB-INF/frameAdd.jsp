@@ -14,6 +14,7 @@
 <body>
     <table border="1">
         <tr>
+            <td>idFilm</td>
             <td>priceFilm</td>
             <td>sensibility</td>
             <td>numFrame</td>
@@ -22,22 +23,22 @@
             <td>placeManifestation</td>
             <td>placeStorage</td>
             <td>idTypeOfFilm</td>
-            <td>Удалить</td>
         </tr>
-        <c:forEach items="${posts}" var="post">
             <tr>
-                <td>${post.priceFilm}</td>
-                <td>${post.sensibility}</td>
-                <td>${post.numFrame}</td>
-                <td>${post.dateStartingSnapshot}</td>
-                <td>${post.dateManifestation}</td>
-                <td>${post.placeManifestation}</td>
-                <td>${post.placeStorage}</td>
-                <td>${post.idTypeOfFilm}</td>
-                <td><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
+                <td></td>
+                <td><input type="number">
+                </td>
+                <td><input type="number"></td>
+                <td><input type="number"></td>
+                <td><input type="date"></td>
+                <td><input type="date"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td></td>
             </tr>
-        </c:forEach>
     </table>
+
+    <input type="submit" value="Добавить">
 
 </body>
 </html>

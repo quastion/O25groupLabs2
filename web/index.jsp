@@ -29,6 +29,12 @@
   <a href="/add?table=film">
     film
   </a>
+  <a href="/add?table=frame">
+    frame
+  </a>
+  <a href="/add?table=member">
+    member
+  </a>
 
 
   </body>

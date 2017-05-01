@@ -18,6 +18,7 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
         String table = String.valueOf(request.getParameter("table"));
         try {
             if (table.equals("film")){
+
                 request.setAttribute("posts", FilmDAO.getFilms());
                 request.getRequestDispatcher("WEB-INF/filmShow.jsp").forward(request, response);
             }
@@ -34,12 +35,6 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
+        System.out.println("AAA!!!A");
     }
 }

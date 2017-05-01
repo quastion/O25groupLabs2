@@ -14,4 +14,5 @@ public abstract class DAO {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         return  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orc","USER_NETCRACKER","123");
     }
+
 }

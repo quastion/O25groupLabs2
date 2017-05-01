@@ -1,5 +1,6 @@
 package com;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,8 +25,21 @@ public class MemberDAO extends DAO {
             return members;
         }
     }
-    public static void deleteFilm(){
 
+    public static void deleteFilm(int id)throws SQLException, ClassNotFoundException{
+        try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from MEMBER WHERE id_Member = ?") ){
+            prepareStatement.setInt(1, id);
+            prepareStatement.executeUpdate();
+        }
+    }
+    public static void addFilm(Member film)throws SQLException, ClassNotFoundException{
+        try(PreparedStatement prepareStatement = FilmDAO.getConnection().
+                prepareStatement("INSERT INTO Member VALUES (null, ?, ?, ?)") ){
+            prepareStatement.setString(1, film.getSurname());
+            prepareStatement.setString(2, film.getName());
+            prepareStatement.setString(3, film.getMiddleName());
+            prepareStatement.executeUpdate();
+        }
     }
 
     public static void main (String[] args){

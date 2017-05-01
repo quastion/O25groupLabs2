@@ -34,6 +34,16 @@ public class Film {
         this.placeStorage = placeStorage;
         this.idTypeOfFilm = idTypeOfFilm;
     }
+    public Film( int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, int idTypeOfFilm) {
+        this.priceFilm = priceFilm;
+        this.sensibility = sensibility;
+        this.numFrame = numFrame;
+        this.dateStartingSnapshot = dateStartingSnapshot;
+        this.dateManifestation = dateManifestation;
+        this.placeManifestation = placeManifestation;
+        this.placeStorage = placeStorage;
+        this.idTypeOfFilm = idTypeOfFilm;
+    }
 
     public int getIdFilm() {
         return idFilm;
@@ -108,4 +118,18 @@ public class Film {
     }
 
 
+    @Override
+    public String toString() {
+        return "Film{" +
+                "idFilm=" + idFilm +
+                ", priceFilm=" + priceFilm +
+                ", sensibility=" + sensibility +
+                ", numFrame=" + numFrame +
+                ", dateStartingSnapshot=" + dateStartingSnapshot +
+                ", dateManifestation=" + dateManifestation +
+                ", placeManifestation='" + placeManifestation + '\'' +
+                ", placeStorage='" + placeStorage + '\'' +
+                ", idTypeOfFilm=" + idTypeOfFilm +
+                '}';
+    }
 }

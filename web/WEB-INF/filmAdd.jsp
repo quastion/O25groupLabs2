@@ -12,9 +12,9 @@
     <title>Title</title>
 </head>
 <body>
+    <form action="/addpost?table=film" method="POST">
     <table border="1">
         <tr>
-            <td>idFilm</td>
             <td>priceFilm</td>
             <td>sensibility</td>
             <td>numFrame</td>
@@ -22,23 +22,33 @@
             <td>dateManifestation</td>
             <td>placeManifestation</td>
             <td>placeStorage</td>
-            <td>idTypeOfFilm</td>
+            <td>TypeOfFilm</td>
         </tr>
-            <tr>
-                <td></td>
-                <td><input type="number">
-                </td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="date"></td>
-                <td><input type="date"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td></td>
-            </tr>
+
+        <tr>
+
+            <td><input name ="priceFilm" type="number"></td>
+            <td><input name ="sensibility" type="number"></td>
+            <td><input name ="numFrame" type="number"></td>
+            <td><input name ="dateStartingSnapshot" type="date"></td>
+            <td><input name ="dateManifestation" type="date"></td>
+            <td><input name ="placeManifestation" type="text"></td>
+            <td><input name="placeStorage" type="text"></td>
+            <td>
+                <select name="idTypeOfFilm">
+                       <option disabled>Выберите тип пленки</option>
+                       <c:forEach items="${posts}" var="post">
+                           <option value="${post.idTypeOfFilm}">${post.typeFilm}</option>
+                       </c:forEach>
+                </select>
+
+
+            </td>
+        </tr>
     </table>
 
     <input type="submit" value="Добавить">
+    </form>
 
 </body>
 </html>

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /**
  * Created by fil-n on 22.04.17.
  */
-@javax.servlet.annotation.WebServlet(name = "ServletShow", urlPatterns = "/add")
+@javax.servlet.annotation.WebServlet(name = "ServletAdd", urlPatterns = "/add")
 public class ServletAdd extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 
@@ -18,28 +18,20 @@ public class ServletAdd extends javax.servlet.http.HttpServlet {
         String table = String.valueOf(request.getParameter("table"));
         try {
             if (table.equals("film")){
-                request.setAttribute("posts", FilmDAO.getFilms());
+                request.setAttribute("posts", FilmDAO.getTypeOfFilm());
                 request.getRequestDispatcher("WEB-INF/filmAdd.jsp").forward(request, response);
             }
             if (table.equals("frame")){
-                request.setAttribute("posts", FrameDAO.getFilms());
-                request.getRequestDispatcher("WEB-INF/frameShow.jsp").forward(request, response);
+                //request.setAttribute("posts", FrameDAO.getFilms());
+                request.getRequestDispatcher("WEB-INF/frameAdd.jsp").forward(request, response);
             }
             if (table.equals("member")){
-                request.setAttribute("posts", MemberDAO.getFilms());
-                request.getRequestDispatcher("WEB-INF/memberShow.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/memberAdd.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
     }
 }

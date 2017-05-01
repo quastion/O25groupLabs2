@@ -1,5 +1,6 @@
 package com;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,8 +27,23 @@ public class FrameDAO extends DAO {
             return frames;
         }
     }
-    public static void deleteFilm(){
 
+    public static void deleteFilm(int id)throws SQLException, ClassNotFoundException{
+        try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from FRAME WHERE idFrame = ?") ){
+            prepareStatement.setInt(1, id);
+            prepareStatement.executeUpdate();
+        }
+    }
+
+    public static void addFilm(Frame frame)throws SQLException, ClassNotFoundException{
+        try(PreparedStatement prepareStatement = FilmDAO.getConnection().
+                prepareStatement("INSERT INTO FRAME VALUES (null, ?, ?, ?, ?)") ){
+            prepareStatement.setDate(1, frame.getDateFrame());
+            prepareStatement.setString(2, frame.getPlaceFrame());
+            prepareStatement.setString(3, frame.getTheme());
+            prepareStatement.setInt(4, frame.getIdFilm());
+            prepareStatement.executeUpdate();
+        }
     }
 
     public static void main (String[] args){

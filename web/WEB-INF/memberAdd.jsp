@@ -12,22 +12,22 @@
     <title>Title</title>
 </head>
 <body>
+    <form action="/addpost?table=member" method="POST">
     <table border="1">
         <tr>
             <td>surname</td>
             <td>name</td>
             <td>middleName</td>
-            <td>Удалить</td>
         </tr>
-        <c:forEach items="${posts}" var="post">
-            <tr>
-                <td>${post.surname}</td>
-                <td>${post.name}</td>
-                <td>${post.middleName}</td>
-                <td><a href="/delete?table=member&id=${post.idMember}">Удалить</a> </td>
-            </tr>
-        </c:forEach>
+        <tr>
+            <td><input name="surname" type="text"></td>
+            <td><input name="name" type="text"></td>
+            <td><input name="middleName" type="text"></td>
+        </tr>
     </table>
+
+    <input type="submit" value="Добавить">
+    </form>
 
 </body>
 </html>
