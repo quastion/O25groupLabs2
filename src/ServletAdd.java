@@ -1,6 +1,7 @@
 import com.FilmDAO;
 import com.FrameDAO;
 import com.MemberDAO;
+import com.PhotoDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,11 +23,17 @@ public class ServletAdd extends javax.servlet.http.HttpServlet {
                 request.getRequestDispatcher("WEB-INF/filmAdd.jsp").forward(request, response);
             }
             if (table.equals("frame")){
-                //request.setAttribute("posts", FrameDAO.getFilms());
+                request.setAttribute("posts", FilmDAO.getFilms());
                 request.getRequestDispatcher("WEB-INF/frameAdd.jsp").forward(request, response);
             }
             if (table.equals("member")){
                 request.getRequestDispatcher("WEB-INF/memberAdd.jsp").forward(request, response);
+            }
+            if (table.equals("photo")){
+                request.setAttribute("developers", PhotoDAO.getDevelopers());
+                request.setAttribute("papers", PhotoDAO.getPapers());
+                request.setAttribute("frames", FrameDAO.getFilms());
+                request.getRequestDispatcher("WEB-INF/photoAdd.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();

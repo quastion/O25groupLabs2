@@ -1,6 +1,7 @@
 import com.FilmDAO;
 import com.FrameDAO;
 import com.MemberDAO;
+import com.PhotoDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,6 +30,11 @@ public class ServletDelete extends javax.servlet.http.HttpServlet {
             if (table.equals("member")){
                 int id = Integer.valueOf(request.getParameter("id"));
                 MemberDAO.deleteFilm(id);
+                response.sendRedirect("/show?table="+table);
+            }
+            if (table.equals("photo")){
+                int id = Integer.valueOf(request.getParameter("id"));
+                PhotoDAO.deleteFilm(id);
                 response.sendRedirect("/show?table="+table);
             }
         } catch (SQLException e) {

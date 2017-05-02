@@ -1,6 +1,7 @@
 import com.FilmDAO;
 import com.FrameDAO;
 import com.MemberDAO;
+import com.PhotoDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,6 +30,10 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
             if (table.equals("member")){
                 request.setAttribute("posts", MemberDAO.getFilms());
                 request.getRequestDispatcher("WEB-INF/memberShow.jsp").forward(request, response);
+            }
+            if (table.equals("photo")){
+                request.setAttribute("posts", PhotoDAO.getFilms());
+                request.getRequestDispatcher("WEB-INF/photoShow.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();

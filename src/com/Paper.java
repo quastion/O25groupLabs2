@@ -7,6 +7,11 @@ public class Paper {
     private int idPaper;
     private String typePaper;
 
+    public Paper(int idPaper, String typePaper) {
+        this.idPaper = idPaper;
+        this.typePaper = typePaper;
+    }
+
     public String getTypePaper() {
         return typePaper;
     }

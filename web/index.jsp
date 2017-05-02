@@ -29,6 +29,9 @@
   <a href="/add?table=film">
     film
   </a>
+  <a href="/add?table=photo">
+    photo
+  </a>
   <a href="/add?table=frame">
     frame
   </a>

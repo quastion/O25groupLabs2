@@ -7,6 +7,12 @@ public class Developer {
     private int idDeveloper;
     private String name;
 
+    public Developer(int idDeveloper, String name) {
+        this.idDeveloper = idDeveloper;
+        this.name = name;
+    }
+
+
     public int getIdDeveloper() {
         return idDeveloper;
     }

@@ -14,7 +14,6 @@
 <body>
     <table border="1">
         <tr>
-            <td>post.idFrame</td>
             <td>post.dateFrame</td>
             <td>post.placeFrame</td>
             <td>post.theme</td>
@@ -22,7 +21,6 @@
         </tr>
         <c:forEach items="${posts}" var="post">
             <tr>
-                <td>${post.idFrame}</td>
                 <td>${post.dateFrame}</td>
                 <td>${post.placeFrame}</td>
                 <td>${post.theme}</td>

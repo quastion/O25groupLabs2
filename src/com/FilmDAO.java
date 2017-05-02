@@ -46,7 +46,7 @@ public class FilmDAO extends DAO {
             prepareStatement.executeUpdate();
         }
     }
-    public static void addFilm(Film film)throws SQLException, ClassNotFoundException{
+    public static void addFilm(Film film) throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = FilmDAO.getConnection().
                 prepareStatement("INSERT INTO FILM VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)") ){
             //INSERT INTO FILM VALUES (null, 22, 33, 44, TO_DATE('11-12-2000'), TO_DATE('11-12-2000'), 'ТОльятти','ТОльятти', 1005);

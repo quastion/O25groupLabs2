@@ -12,33 +12,30 @@
     <title>Title</title>
 </head>
 <body>
+<form action="/addpost?table=frame" method="POST">
     <table border="1">
         <tr>
+            <td>dateFrame</td>
+            <td>placeFrame</td>
+            <td>theme</td>
             <td>idFilm</td>
-            <td>priceFilm</td>
-            <td>sensibility</td>
-            <td>numFrame</td>
-            <td>dateStartingSnapshot</td>
-            <td>dateManifestation</td>
-            <td>placeManifestation</td>
-            <td>placeStorage</td>
-            <td>idTypeOfFilm</td>
         </tr>
             <tr>
-                <td></td>
-                <td><input type="number">
+                <td><input name ="dateFrame" type="date"></td>
+                <td><input name="placeFrame" type="text"></td>
+                <td><input name="theme" type="text"></td>
+                <td>
+                    <select name="idFilm">
+                        <option disabled>Выберите пленку</option>
+                        <c:forEach items="${posts}" var="post">
+                            <option value="${post.idFilm}">Цена:${post.priceFilm},чув-ть:${post.sensibility} , дата съемки: ${post.dateStartingSnapshot}</option>
+                        </c:forEach>
+                    </select>
                 </td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="date"></td>
-                <td><input type="date"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td></td>
             </tr>
     </table>
 
     <input type="submit" value="Добавить">
-
+</form>
 </body>
 </html>

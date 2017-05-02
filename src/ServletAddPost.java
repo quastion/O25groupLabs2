@@ -42,6 +42,37 @@ public class ServletAddPost extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        if (table.equals("frame")){
+            //String pr = request.getParameter("idTypeOfFilm");
+            Frame frame = new Frame(Date.valueOf(request.getParameter("dateFrame")), request.getParameter("placeFrame"),
+                    request.getParameter("theme"), Integer.valueOf(request.getParameter("idFilm")) );
+            try {
+                FrameDAO.addFilm(frame);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        if (table.equals("photo")){
+            //String pr = request.getParameter("idTypeOfFilm");
+            Photo photo = null;
+            try {
+                photo = new Photo(Date.valueOf(request.getParameter("datePrinting")),
+                        Integer.valueOf(request.getParameter("size")), Integer.valueOf(request.getParameter("number")),
+                        Integer.valueOf(request.getParameter("pricePhoto")), request.getParameter("placePhoto"),
+                        Integer.valueOf(request.getParameter("idDeveloper")), Integer.valueOf(request.getParameter("idPaper")),
+                        Integer.valueOf(request.getParameter("idFrame")));
+
+                        System.out.println("ЖЖЖЖЖЖЖЖЖЖ");
+
+                        PhotoDAO.addPhoto(photo);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
