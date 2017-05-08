@@ -9,56 +9,66 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Пленки</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <form action="/addpost?table=photo" method="POST">
-    <table border="1">
-        <tr>
-            <td>datePrinting</td>
-            <td>size</td>
-            <td>number</td>
-            <td>pricePhoto</td>
-            <td>placePhoto</td>
-            <td>idDeveloper</td>
-            <td>idPaper</td>
-            <td>idFrame-idFilm</td>
-        </tr>
+<div>
+    <div id = "header">
+        <h1>Фототека<h1>
+    </div>
+    <div id = "content">
+        <ul>
+            <li><a href="/addpost?table=photo" method="POST">Добавить</a>
+        </ul>
+
+        <table class="simple-little-table" cellspacing='0'>
             <tr>
-                <td><input name ="datePrinting" type="date"></td>
-                <td><input name ="size" type="number"></td>
-                <td><input name ="number" type="number"></td>
-                <td><input name ="pricePhoto" type="number"></td>
-                <td><input name="placePhoto" type="text"></td>
-                <td>
+                <th>Дата печати</th>
+                <th>Размер</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Хранение</th>
+                <th>Код производителя</th>
+                <th>Код бумаги</th>
+                <th>Код пленки</th>
+            </tr><!-- Table Header -->
+            <tr>
+                <th><input name ="datePrinting" type="date"></th>
+                <th><input name ="size" type="number"></th>
+                <th><input name ="number" type="number"></th>
+                <th><input name ="pricePhoto" type="number"></th>
+                <th><input name="placePhoto" type="text"></th>
+                <th>
                     <select name="idDeveloper">
                         <option disabled>Выберите изготовителя</option>
                         <c:forEach items="${developers}" var="developer">
                             <option value="${developer.idDeveloper}">${developer.name}</option>
                         </c:forEach>
                     </select>
-                </td>
-                <td>
+                </th>
+                <th>
                     <select name="idPaper">
                         <option disabled>Выберите тип бумаги</option>
                         <c:forEach items="${papers}" var="paper">
                             <option value="${paper.idPaper}">${paper.typePaper}</option>
                         </c:forEach>
                     </select>
-                </td>
-                <td>
+                </th>
+                <th>
                     <select name="idFrame">
                         <option disabled>Выберите кадр</option>
                         <c:forEach items="${frames}" var="frame">
                             <option value="${frame.idFrame}">Дата съемки:${frame.dateFrame}, место съемки:${frame.placeFrame}, тема:${frame.theme} </option>
                         </c:forEach>
                     </select>
-                </td>
+                </th>
             </tr>
-    </table>
-
-    <input type="submit" value="Добавить">
-    </form>
+        </table>
+    </div>
+    <div id = "footer"></div>
+</div>
 
 </body>
 </html>

@@ -9,46 +9,52 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Films</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <form action="/addpost?table=film" method="POST">
-    <table border="1">
-        <tr>
-            <td>priceFilm</td>
-            <td>sensibility</td>
-            <td>numFrame</td>
-            <td>dateStartingSnapshot</td>
-            <td>dateManifestation</td>
-            <td>placeManifestation</td>
-            <td>placeStorage</td>
-            <td>TypeOfFilm</td>
-        </tr>
+<div>
+    <div id = "header">
+        <h1>Фототека<h1>
+    </div>
+    <div id = "content">
+        <ul>
+            <li><a href="/addpost?table=film" method="POST">Добавить</a>
+        </ul>
 
-        <tr>
+        <table class="simple-little-table" cellspacing='0'>
+            <tr>
+                <th>Цена</th>
+                <th>Чувств.</th>
+                <th>Количество</th>
+                <th>Дата снимка</th>
+                <th>Дата проявки</th>
+                <th>Место проявки</th>
+                <th>Хранение</th>
+                <th>Тип пленки</th>
+            </tr><!-- Table Header -->
 
-            <td><input name ="priceFilm" type="number"></td>
-            <td><input name ="sensibility" type="number"></td>
-            <td><input name ="numFrame" type="number"></td>
-            <td><input name ="dateStartingSnapshot" type="date"></td>
-            <td><input name ="dateManifestation" type="date"></td>
-            <td><input name ="placeManifestation" type="text"></td>
-            <td><input name="placeStorage" type="text"></td>
-            <td>
-                <select name="idTypeOfFilm">
-                       <option disabled>Выберите тип пленки</option>
-                       <c:forEach items="${posts}" var="post">
-                           <option value="${post.idTypeOfFilm}">${post.typeFilm}</option>
-                       </c:forEach>
-                </select>
-
-
-            </td>
-        </tr>
-    </table>
-
-    <input type="submit" value="Добавить">
-    </form>
-
+            <tr>
+                <th><input name ="priceFilm" type="number"></th>
+                <th><input name ="sensibility" type="number"></th>
+                <th><input name ="numFrame" type="number"></th>
+                <th><input name ="dateStartingSnapshot" type="date"></th>
+                <th><input name ="dateManifestation" type="date"></th>
+                <th><input name ="placeManifestation" type="text"></th>
+                <th><input name="placeStorage" type="text"></th>
+                <th>
+                    <select name="idTypeOfFilm">
+                        <option disabled>Выберите тип пленки</option>
+                        <c:forEach items="${posts}" var="post">
+                            <option value="${post.idTypeOfFilm}">${post.typeFilm}</option>
+                        </c:forEach>
+                    </select>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div id = "footer"></div>
+</div>
 </body>
 </html>

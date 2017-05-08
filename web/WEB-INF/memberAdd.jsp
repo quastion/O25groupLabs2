@@ -9,25 +9,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Пленки</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <form action="/addpost?table=member" method="POST">
-    <table border="1">
-        <tr>
-            <td>surname</td>
-            <td>name</td>
-            <td>middleName</td>
-        </tr>
-        <tr>
-            <td><input name="surname" type="text"></td>
-            <td><input name="name" type="text"></td>
-            <td><input name="middleName" type="text"></td>
-        </tr>
-    </table>
+<div>
+    <div id = "header">
+        <h1>Фототека<h1>
+    </div>
+    <div id = "content">
+        <ul>
+            <li><a href="/addpost?table=member" method="POST">Добавить</a>
+        </ul>
 
-    <input type="submit" value="Добавить">
-    </form>
+        <table class="simple-little-table" cellspacing='0'>
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+            </tr><!-- Table Header -->
+            <tr>
+                <th><input name="surname" type="text"></th>
+                <th><input name="name" type="text"></th>
+                <th><input name="middleName" type="text"></th>
+            </tr>
+        </table>
+    </div>
+    <div id = "footer"></div>
+</div>
 
 </body>
 </html>

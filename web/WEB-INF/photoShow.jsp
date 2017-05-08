@@ -9,37 +9,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Пленки</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <td>datePrinting</td>
-            <td>size</td>
-            <td>number</td>
-            <td>pricePhoto</td>
-            <td>placePhoto</td>
-            <td>idDeveloper</td>
-            <td>idPaper</td>
-            <td>idFrame</td>
-            <td>idFilm</td>
-            <td>Удалить</td>
-        </tr>
-        <c:forEach items="${posts}" var="post">
+<div>
+    <div id = "header">
+        <h1>Фототека<h1>
+    </div>
+    <div id = "content">
+
+        <table class="simple-little-table" cellspacing='0'>
             <tr>
-                <td>${post.datePrinting}</td>
-                <td>${post.size}</td>
-                <td>${post.number}</td>
-                <td>${post.pricePhoto}</td>
-                <td>${post.placePhoto}</td>
-                <td>${post.idDeveloper}</td>
-                <td>${post.idPaper}</td>
-                <td>${post.idFrame}</td>
-                <td>${post.idFilm}</td>
-                <td><a href="/delete?table=photo&id=${post.idPhoto}">Удалить</a> </td>
-            </tr>
-        </c:forEach>
-    </table>
+                <th>Дата печати</th>
+                <th>Размер</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Хранение</th>
+                <th>Код производителя</th>
+                <th>Код бумаги</th>
+                <th>Код кадра</th>
+                <th>Код пленки</th>
+                <th>Удалить</th>
+            </tr><!-- Table Header -->
+            <c:forEach items="${posts}" var="post">
+                <tr>
+                    <th>${post.datePrinting}</th>
+                    <th>${post.size}</th>
+                    <th>${post.number}</th>
+                    <th>${post.pricePhoto}</th>
+                    <th>${post.placePhoto}</th>
+                    <th>${post.idDeveloper}</th>
+                    <th>${post.idPaper}</th>
+                    <th>${post.idFrame}</th>
+                    <th>${post.idFilm}</th>
+                    <th><a href="/delete?table=photo&id=${post.idPhoto}">Удалить</a> </th>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+    <div id = "footer"></div>
+</div>
 
 </body>
 </html>

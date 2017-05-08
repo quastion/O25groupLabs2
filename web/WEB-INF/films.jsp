@@ -10,34 +10,44 @@
 <html>
 <head>
     <title>Films</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<table border="=1">
-    <tr>
-        <td>idFilm</td>
-        <td>priceFilm</td>
-        <td>sensibility</td>
-        <td>numFrame</td>
-        <td>dateStartingSnapshot</td>
-        <td>dateManifestation</td>
-        <td>placeManifestation</td>
-        <td>placeStorage</td>
-        <td>idTypeOfFilm</td>
-    </tr>
-    <c:forEach items="${films}" var="film">
-        <tr>
-            <td>${film.idFilm}</td>
-            <td>${film.priceFilm}</td>
-            <td>${film.sensibility}</td>
-            <td>${film.numFrame}</td>
-            <td>${film.dateStartingSnapshot}</td>
-            <td>${film.dateManifestation}</td>
-            <td>${film.placeManifestation}</td>
-            <td>${film.placeStorage}</td>
-            <td>${film.idTypeOfFilm}</td>
-        </tr>
-    </c:forEach>
-</table>
+<div>
+    <div id = "header">
+        <h1>Фототека<h1>
+    </div>
+    <div id = "content">
+        <table class="simple-little-table" cellspacing='0'>
+            <tr>
+                <th>Код</th>
+                <th>Цена</th>
+                <th>Чувств.</th>
+                <th>Количество</th>
+                <th>Дата снимка</th>
+                <th>Дата проявки</th>
+                <th>Место проявки</th>
+                <th>Хранение</th>
+                <th>Тип пленки</th>
+            </tr><!-- Table Header -->
+            <c:forEach items="${films}" var="film">
+                <tr>
+                    <th>${film.idFilm}</th>
+                    <th>${film.priceFilm}</th>
+                    <th>${film.sensibility}</th>
+                    <th>${film.numFrame}</th>
+                    <th>${film.dateStartingSnapshot}</th>
+                    <th>${film.dateManifestation}</th>
+                    <th>${film.placeManifestation}</th>
+                    <th>${film.placeStorage}</th>
+                    <th>${film.idTypeOfFilm}</th>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+    <div id = "footer"></div>
+</div>
 
 </body>
 </html>

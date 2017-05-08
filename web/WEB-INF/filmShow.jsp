@@ -9,35 +9,45 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Пленки</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <td>priceFilm</td>
-            <td>sensibility</td>
-            <td>numFrame</td>
-            <td>dateStartingSnapshot</td>
-            <td>dateManifestation</td>
-            <td>placeManifestation</td>
-            <td>placeStorage</td>
-            <td>idTypeOfFilm</td>
-            <td>Удалить</td>
-        </tr>
-        <c:forEach items="${posts}" var="post">
+<div>
+    <div id = "header">
+        <h1>Фототека<h1>
+    </div>
+    <div id = "content">
+        <table class="simple-little-table" cellspacing='0'>
             <tr>
-                <td>${post.priceFilm}</td>
-                <td>${post.sensibility}</td>
-                <td>${post.numFrame}</td>
-                <td>${post.dateStartingSnapshot}</td>
-                <td>${post.dateManifestation}</td>
-                <td>${post.placeManifestation}</td>
-                <td>${post.placeStorage}</td>
-                <td>${post.idTypeOfFilm}</td>
-                <td><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
-            </tr>
-        </c:forEach>
-    </table>
+                <th>Цена</th>
+                <th>Чувств.</th>
+                <th>Количество</th>
+                <th>Дата снимка</th>
+                <th>Дата проявки</th>
+                <th>Место проявки</th>
+                <th>Хранение</th>
+                <th>Тип пленки</th>
+                <th>Удалить</th>
+            </tr><!-- Table Header -->
+            <c:forEach items="${posts}" var="post">
+                <tr>
+                    <th>${post.priceFilm}</th>
+                    <th>${post.sensibility}</th>
+                    <th>${post.numFrame}</th>
+                    <th>${post.dateStartingSnapshot}</th>
+                    <th>${post.dateManifestation}</th>
+                    <th>${post.placeManifestation}</th>
+                    <th>${post.placeStorage}</th>
+                    <th>${post.idTypeOfFilm}</th>
+                    <th><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+    <div id = "footer"></div>
+</div>
 
 </body>
 </html>

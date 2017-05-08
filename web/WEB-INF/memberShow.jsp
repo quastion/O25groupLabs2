@@ -9,25 +9,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Пленки</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <td>surname</td>
-            <td>name</td>
-            <td>middleName</td>
-            <td>Удалить</td>
-        </tr>
-        <c:forEach items="${posts}" var="post">
+<div>
+    <div id = "header">
+        <h1>Фототека<h1>
+    </div>
+    <div id = "content">
+        <table class="simple-little-table" cellspacing='0'>
             <tr>
-                <td>${post.surname}</td>
-                <td>${post.name}</td>
-                <td>${post.middleName}</td>
-                <td><a href="/delete?table=member&id=${post.idMember}">Удалить</a> </td>
-            </tr>
-        </c:forEach>
-    </table>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Удалить</th>
+            </tr><!-- Table Header -->
+            <c:forEach items="${posts}" var="post">
+                <tr>
+                    <th>${post.surname}</th>
+                    <th>${post.name}</th>
+                    <th>${post.middleName}</th>
+                    <th><a href="/delete?table=member&id=${post.idMember}">Удалить</a> </th>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+    <div id = "footer"></div>
+</div>
 
 </body>
 </html>
