@@ -19,22 +19,25 @@
         <h1>Фототека<h1>
     </div>
     <div id = "content">
-        <ul>
-            <li><a href="/addpost?table=member" method="POST">Добавить</a>
-        </ul>
+        <form action="/addpost?table=film" method="POST">
+            <ul>
+                <li><a href = "#">Главная</a> </li>
+                <li><a href="/addpost?table=member" method="POST">Добавить</a>
+            </ul>
 
-        <table class="simple-little-table" cellspacing='0'>
-            <tr>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Отчество</th>
-            </tr><!-- Table Header -->
-            <tr>
-                <th><input name="surname" type="text"></th>
-                <th><input name="name" type="text"></th>
-                <th><input name="middleName" type="text"></th>
-            </tr>
-        </table>
+            <table class="simple-little-table" style = "padding: 10px 0 10px 0;" cellspacing='0'>
+                <tr>
+                    <td>Фамилия</td>
+                    <td>Имя</td>
+                    <td>Отчество</td>
+                </tr><!-- Table Header -->
+                <tr>
+                    <td><input name="surname" type="text"></td>
+                    <td><input name="name" type="text"></td>
+                    <td><input name="middleName" type="text"></td>
+                </tr>
+            </table>
+        </form>
     </div>
     <div id = "footer"></div>
 </div>

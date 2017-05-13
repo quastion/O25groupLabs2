@@ -19,31 +19,35 @@
         <h1>Фототека<h1>
     </div>
     <div id = "content">
-        <ul>
-            <li><a href="/addpost?table=frame" method="POST">Добавить</a>
-        </ul>
+        <form action="/addpost?table=frame" method="POST">
+            <ul>
+                <li><a href = "#">Главная</a> </li>
+                <li><a href="/addpost?table=frame" method="POST">Добавить</a>
+            </ul>
 
-        <table class="simple-little-table" cellspacing='0'>
-            <tr>
-                <th>Дата снимка</th>
-                <th>Хранение</th>
-                <th>Тема</th>
-                <th>Код пленки</th>
-            </tr><!-- Table Header -->
-            <tr>
-                <th><input name ="dateFrame" type="date"></th>
-                <th><input name="placeFrame" type="text"></th>
-                <th><input name="theme" type="text"></th>
-                <th>
-                    <select name="idFilm">
-                        <option disabled>Выберите пленку</option>
-                        <c:forEach items="${posts}" var="post">
-                            <option value="${post.idFilm}">Цена:${post.priceFilm},чув-ть:${post.sensibility} , дата съемки: ${post.dateStartingSnapshot}</option>
-                        </c:forEach>
-                    </select>
-                </th>
-            </tr>
-        </table>
+            <table class="simple-little-table"
+                   style = "padding: 10px 0 10px 0;" cellspacing='0'>
+                <tr>
+                    <td>Дата снимка</td>
+                    <td>Хранение</td>
+                    <td>Тема</td>
+                    <td>Код пленки</td>
+                </tr><!-- Table Header -->
+                <tr>
+                    <td><input name ="dateFrame" type="date"></td>
+                    <td><input name="placeFrame" type="text"></td>
+                    <td><input name="theme" type="text"></td>
+                    <td>
+                        <select name="idFilm">
+                            <option disabled>Выберите пленку</option>
+                            <c:forEach items="${posts}" var="post">
+                                <option value="${post.idFilm}">Цена:${post.priceFilm},чув-ть:${post.sensibility} , дата съемки: ${post.dateStartingSnapshot}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
     <div id = "footer"></div>
 </div>

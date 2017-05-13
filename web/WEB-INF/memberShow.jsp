@@ -19,19 +19,22 @@
         <h1>Фототека<h1>
     </div>
     <div id = "content">
-        <table class="simple-little-table" cellspacing='0'>
+        <ul>
+            <li><a href = "#">Главная</a> </li>
+        </ul>
+        <table class="simple-little-table" style = "padding: 10px 0 10px 0;"  cellspacing='0'>
             <tr>
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Отчество</th>
-                <th>Удалить</th>
+                <td>Фамилия</td>
+                <td>Имя</td>
+                <td>Отчество</td>
+                <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
                 <tr>
-                    <th>${post.surname}</th>
-                    <th>${post.name}</th>
-                    <th>${post.middleName}</th>
-                    <th><a href="/delete?table=member&id=${post.idMember}">Удалить</a> </th>
+                    <td>${post.surname}</td>
+                    <td>${post.name}</td>
+                    <td>${post.middleName}</td>
+                    <td><a href="/delete?table=member&id=${post.idMember}">Удалить</a> </td>
                 </tr>
             </c:forEach>
         </table>
