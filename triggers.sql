@@ -92,3 +92,16 @@ BEGIN
       END IF; 
    END IF; 
 END;
+
+//===========================================================Для юзера
+CREATE OR REPLACE TRIGGER TRIG_USER
+   BEFORE INSERT ON "USER_NETCRACKER"."USER"
+   FOR EACH ROW
+BEGIN
+   IF INSERTING THEN
+      IF :NEW."ID_USER" IS NULL THEN
+         SELECT SEQFORTABLES.NEXTVAL INTO :NEW."ID_USER" FROM DUAL;
+      END IF;
+   END IF;
+END;
+//======================================================================
