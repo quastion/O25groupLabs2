@@ -6,7 +6,7 @@ ul {
     background:#819A32; /*добавляем фон всему меню*/
     height: 50px; /*задаем высоту*/
 }
-a {
+li >  a {
     text-decoration: none; /*убираем подчеркивание текста ссылок*/
     background:#819A32; /*добавляем фон к пункту меню*/
     color:#fff; /*меняем цвет ссылок*/
@@ -23,10 +23,22 @@ a {
 a > input{
     height: 50px;
     background-color: transparent;
+    background:#819A32; /*добавляем фон всему меню*/
     border: 0;
     color:#fff; /*меняем цвет ссылок*/
     font-family: arial; /*меняем шрифт*/
+    width: 100px;
 }
+
+a > input:hover {
+    background:#D43737;/*добавляем эффект при наведении*/
+}
+a > input {
+    /*float:left; /*Размещаем список горизонтально для реализации меню*/
+    /*position:relative; /*задаем позицию для позиционирования*/
+    margin: 10px
+}
+
 
 h1 {
     color:#fff; /*меняем цвет ссылок*/
@@ -44,7 +56,7 @@ h1:hover {
     color:#D43737;/*добавляем эффект при наведении*/
 }
 
-a:hover {
+li > a:hover {
     background:#D43737;/*добавляем эффект при наведении*/
 }
 li {
@@ -170,6 +182,111 @@ simple-little-table {
 }
 
 
+/*
+Для формы авторизации
+*/
+auth-table {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#666;
+    font-size:12px;
+    text-shadow: 1px 1px 0px #fff;
+    background:#eaebec;
+
+    border:#ccc 1px solid;
+    border-collapse:separate;
+
+
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+
+
+}
+
+.auth-table td {
+    font-weight:bold;
+    padding:5px 5px 5px 5px;
+
+    border-top:1px solid #5A6B23;
+    border-bottom:1px solid #9AB73C;
+    width: 200;
+    height: 50;
+
+    background: #819A32;
+    background: -webkit-gradient(linear, left top, left bottom, from(#72872C), to(#9CB73C));
+    background: -moz-linear-gradient(top,  #72872C,  #9CB73C);
+    border-left: 1px solid #72872C;
+}
+
+.auth-table tr:first-child td:first-child{
+    -moz-border-radius-topleft:3px;
+    -webkit-border-top-left-radius:3px;
+    border-top-left-radius:3px;
+}
+
+
+
+.auth-table tr:first-child td:last-child{
+    -moz-border-radius-topright:3px;
+    -webkit-border-top-right-radius:3px;
+    border-top-right-radius:3px;
+}
+
+.auth-table tr{
+    text-align: center;
+    padding-left:20px;
+}
+
+.auth-table tr:last-child td{
+    border-bottom:0;
+}
+
+.auth-table tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:3px;
+    -webkit-border-bottom-left-radius:3px;
+    border-bottom-left-radius:3px;
+}
+
+.auth-table tr:last-child td:last-child{
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-bottom-right-radius:3px;
+    border-bottom-right-radius:3px;
+}
+
+.auth-table tr:hover td{
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#72A72C), to(#9CB73C));
+    background: -moz-linear-gradient(top,  #72A72C), to(#9CB73C));
+    background: -moz-linear-gradient(top,  #72A72C,  #9CB73C);
+}
+
+.auth-table input{
+    background: #ACC643;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-table a:link {
+    color: #666;
+    font-weight: bold;
+    text-decoration:none;
+}
+.auth-table a:visited {
+    color: #999999;
+    font-weight:bold;
+    text-decoration:none;
+}
+.auth-table a:active,
+.auth-table a:hover {
+    color: #bd5a35;
+    text-decoration:underline;
+}
+
 
 
 #wrapper{
@@ -195,9 +312,10 @@ simple-little-table {
 }
 #content{
     height: 1000px;
-    background: #9ef7af;
+    background: #75B781;
     margin: 20 100px 20 0px;
     width: 1600px;
+
 }
 #footer{
     height: 80px;

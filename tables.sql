@@ -55,11 +55,28 @@ CREATE TABLE Photo
 	id_frame             INTEGER NOT NULL ,
 	id_film              INTEGER NOT NULL 
 );
+
 CREATE TABLE TypeOfFilm
 (
 	id_type_of_film      INTEGER NOT NULL ,
 	Type_film            VARCHAR2(100) NULL 
 );
+
+//======================================================== Добавление, все что связано с юзером
+CREATE TABLE User
+(
+	id_user      INTEGER NOT NULL ,
+	Login            VARCHAR2(100) NOT NULL,
+	Password      VARCHAR2(100) NOT NULL,
+	Access      VARCHAR2(5) NOT NULL
+);
+
+CREATE UNIQUE INDEX XPKUser ON User
+(id_user   ASC);
+
+ALTER TABLE User
+	ADD CONSTRAINT  XPKUser PRIMARY KEY (id_user);
+//===========================================================
 
 CREATE UNIQUE INDEX XPKDeveloper ON Developer
 (id_developer   ASC);
