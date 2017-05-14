@@ -62,7 +62,7 @@ CREATE TABLE TypeOfFilm
 	Type_film            VARCHAR2(100) NULL 
 );
 
-//======================================================== Добавление, все что связано с юзером
+//======================================================== Добавление новых таблиц, все что связано с юзером
 CREATE TABLE User
 (
 	id_user      INTEGER NOT NULL ,
@@ -76,6 +76,28 @@ CREATE UNIQUE INDEX XPKUser ON User
 
 ALTER TABLE User
 	ADD CONSTRAINT  XPKUser PRIMARY KEY (id_user);
+
+CREATE TABLE UserRating
+(
+	id_user   INTEGER NOT NULL ,
+	id_film   INTEGER NOT NULL ,
+	rating    INTEGER NULL
+);
+
+CREATE UNIQUE INDEX XPKUserRating1 ON UserRating
+(id_user   ASC);
+CREATE UNIQUE INDEX XPKUserRating2 ON UserRating
+(id_film   ASC);
+
+ALTER TABLE UserRating
+	ADD CONSTRAINT  XPKUserRating1 PRIMARY KEY (id_user);
+ALTER TABLE UserRating
+	ADD CONSTRAINT  XPKUserRating2 PRIMARY KEY (id_film);
+
+ALTER TABLE UserRating
+	ADD (CONSTRAINT R_8 FOREIGN KEY (id_user) REFERENCES User (id_user) ON DELETE SET NULL);
+ALTER TABLE UserRating
+	ADD (CONSTRAINT R_9 FOREIGN KEY (id_film) REFERENCES Film (id_film) ON DELETE SET NULL);
 //===========================================================
 
 CREATE UNIQUE INDEX XPKDeveloper ON Developer

@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Обзор пленок</title>
+    <title>Пленки</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
@@ -33,6 +33,8 @@
                 <td>Место проявки</td>
                 <td>Хранение</td>
                 <td>Тип пленки</td>
+                <td>Рейтинг</td>
+                <td>Рейтинг пользователя</td>
                 <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
@@ -45,6 +47,25 @@
                     <td>${post.placeManifestation}</td>
                     <td>${post.placeStorage}</td>
                     <td>${post.idTypeOfFilm}</td>
+                    <td>${post.rating}</td>
+                    <td>
+                        <div id="reviewStars-input" style="width:150px;">
+                            <input id="star-4" type="radio" name="reviewStars"/>
+                            <label title="gorgeous" for="star-4"></label>
+
+                            <input id="star-3" type="radio" name="reviewStars"/>
+                            <label title="good" for="star-3"></label>
+
+                            <input id="star-2" type="radio" name="reviewStars"/>
+                            <label title="regular" for="star-2"></label>
+
+                            <input id="star-1" type="radio" name="reviewStars"/>
+                            <label title="poor" for="star-1"></label>
+
+                            <input id="star-0" type="radio" name="reviewStars"/>
+                            <label title="bad" for="star-0"></label>
+                        </div>
+                    </td>
                     <td><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
                 </tr>
             </c:forEach>
