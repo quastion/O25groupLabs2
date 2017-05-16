@@ -40,6 +40,5 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println("AAA!!!A");
     }
 }

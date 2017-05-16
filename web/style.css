@@ -1,0 +1,397 @@
+ul {
+    list-style: none; /*убираем маркеры списка*/
+    margin: 0; /*убираем отступы*/
+    padding-left: 0; /*убираем отступы*/
+    margin-top:25px; /*делаем отступ сверху*/
+    background:#819A32; /*добавляем фон всему меню*/
+    height: 50px; /*задаем высоту*/
+}
+li >  a {
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    background:#819A32; /*добавляем фон к пункту меню*/
+    color:#fff; /*меняем цвет ссылок*/
+    padding:0px 15px; /*добавляем отступ*/
+    font-family: arial; /*меняем шрифт*/
+    line-height:50px; /*ровняем меню по вертикали*/
+    display: block;
+    border-right: 1px solid #677B27; /*добавляем бордюр справа*/
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+}
+
+a > input{
+    height: 50px;
+    background-color: transparent;
+    background:#819A32; /*добавляем фон всему меню*/
+    border: 0;
+    color:#fff; /*меняем цвет ссылок*/
+    font-family: arial; /*меняем шрифт*/
+    width: 100px;
+}
+
+a > input:hover {
+    background:#D43737;/*добавляем эффект при наведении*/
+}
+a > input {
+    /*float:left; /*Размещаем список горизонтально для реализации меню*/
+    /*position:relative; /*задаем позицию для позиционирования*/
+    margin: 10px
+}
+
+
+h1 {
+    color:#fff; /*меняем цвет ссылок*/
+    padding:0px 15px; /*добавляем отступ*/
+    font-family: arial; /*меняем шрифт*/
+    line-height:70px; /*ровняем меню по вертикали*/
+    display: block;
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+    text-align: center;
+}
+
+h1:hover {
+    color:#D43737;/*добавляем эффект при наведении*/
+}
+
+li > a:hover {
+    background:#D43737;/*добавляем эффект при наведении*/
+}
+li {
+    float:left; /*Размещаем список горизонтально для реализации меню*/
+    position:relative; /*задаем позицию для позиционирования*/
+}
+
+/*Стили для скрытого выпадающего меню*/
+li > ul {
+    position:absolute;
+    top:25px;
+    display:none;
+}
+
+/*Делаем скрытую часть видимой*/
+li:hover > ul {
+    display:block;
+    width:250px;  /*Задаем ширину выпадающего меню*/
+}
+li:hover > ul > li {
+    float:none; /*Убираем горизонтальное позиционирование*/
+}
+
+
+
+
+
+
+simple-little-table {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#666;
+    font-size:12px;
+    text-shadow: 1px 1px 0px #fff;
+    background:#eaebec;
+
+    border:#ccc 1px solid;
+    border-collapse:separate;
+
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+
+
+}
+
+.simple-little-table td {
+    font-weight:bold;
+    padding:5px 5px 5px 5px;
+
+    border-top:1px solid #5A6B23;
+    border-bottom:1px solid #9AB73C;
+    width: 1%;
+
+    background: #819A32;
+    background: -webkit-gradient(linear, left top, left bottom, from(#72872C), to(#9CB73C));
+    background: -moz-linear-gradient(top,  #72872C,  #9CB73C);
+    border-left: 1px solid #72872C;
+}
+
+.simple-little-table tr:first-child td:first-child{
+    -moz-border-radius-topleft:3px;
+    -webkit-border-top-left-radius:3px;
+    border-top-left-radius:3px;
+}
+
+.simple-little-table tr:first-child td:last-child{
+    -moz-border-radius-topright:3px;
+    -webkit-border-top-right-radius:3px;
+    border-top-right-radius:3px;
+}
+
+.simple-little-table tr{
+    text-align: center;
+    padding-left:20px;
+}
+
+.simple-little-table tr:last-child td{
+    border-bottom:0;
+}
+
+.simple-little-table tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:3px;
+    -webkit-border-bottom-left-radius:3px;
+    border-bottom-left-radius:3px;
+}
+
+.simple-little-table tr:last-child td:last-child{
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-bottom-right-radius:3px;
+    border-bottom-right-radius:3px;
+}
+
+.simple-little-table tr:hover td{
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#72A72C), to(#9CB73C));
+    background: -moz-linear-gradient(top,  #72A72C, #9CB73C);
+    background: -moz-linear-gradient(top,  #72A72C,  #9CB73C);
+}
+
+.simple-little-table input, select{
+    background: #ACC643;
+    border: 0px;
+}
+
+.simple-little-table a:link {
+    color: #666;
+    font-weight: bold;
+    text-decoration:none;
+}
+.simple-little-table a:visited {
+    color: #999999;
+    font-weight:bold;
+    text-decoration:none;
+}
+.simple-little-table a:active,
+.simple-little-table a:hover {
+    color: #bd5a35;
+    text-decoration:underline;
+}
+
+
+/*
+Для формы авторизации
+*/
+auth-table {
+    font-family:Arial, Helvetica, sans-serif;
+    color:#666;
+    font-size:12px;
+    text-shadow: 1px 1px 0px #fff;
+    background:#eaebec;
+
+    border:#ccc 1px solid;
+    border-collapse:separate;
+
+
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+
+
+}
+
+.auth-table td {
+    font-weight:bold;
+    padding:5px 5px 5px 5px;
+
+    border-top:1px solid #5A6B23;
+    border-bottom:1px solid #9AB73C;
+    width: 200px;
+    height: 50px;
+
+    background: #819A32;
+    background: -webkit-gradient(linear, left top, left bottom, from(#72872C), to(#9CB73C));
+    background: -moz-linear-gradient(top,  #72872C,  #9CB73C);
+    border-left: 1px solid #72872C;
+}
+
+.auth-table tr:first-child td:first-child{
+    -moz-border-radius-topleft:3px;
+    -webkit-border-top-left-radius:3px;
+    border-top-left-radius:3px;
+}
+
+
+
+.auth-table tr:first-child td:last-child{
+    -moz-border-radius-topright:3px;
+    -webkit-border-top-right-radius:3px;
+    border-top-right-radius:3px;
+}
+
+.auth-table tr{
+    text-align: center;
+    padding-left:20px;
+}
+
+.auth-table tr:last-child td{
+    border-bottom:0;
+}
+
+.auth-table tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:3px;
+    -webkit-border-bottom-left-radius:3px;
+    border-bottom-left-radius:3px;
+}
+
+.auth-table tr:last-child td:last-child{
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-bottom-right-radius:3px;
+    border-bottom-right-radius:3px;
+}
+
+.auth-table tr:hover td{
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#72A72C), to(#9CB73C));
+    background: -moz-linear-gradient(top,  #72A72C, #9CB73C);
+    background: -moz-linear-gradient(top,  #72A72C,  #9CB73C);
+}
+
+.auth-table input{
+    background: #ACC643;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-table a:link {
+    color: #666;
+    font-weight: bold;
+    text-decoration:none;
+}
+.auth-table a:visited {
+    color: #999999;
+    font-weight:bold;
+    text-decoration:none;
+}
+.auth-table a:active,
+.auth-table a:hover {
+    color: #bd5a35;
+    text-decoration:underline;
+}
+
+
+/*sprite with stars*/
+#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+    background: url(WEB-INF/stars.png) no-repeat;
+}
+
+#reviewStars-input {
+
+    /*fix floating problems*/
+    overflow: hidden;
+    *zoom: 1;
+    /*end of fix floating problems*/
+
+    position: relative;
+    float: left;
+}
+
+#reviewStars-input input {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+#reviewStars-input input:checked ~ label {
+    background-position: 0 -20px;
+    height: 20px;
+    width: 20px;
+}
+
+#reviewStars-input label {
+    background-position: 0 0;
+    height: 20px;
+    width: 20px;
+    float: right;
+    cursor: pointer;
+    margin-right: 8px;
+
+    position: relative;
+    z-index: 1;
+}
+
+#reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+    background-position: 0 -20px;
+    height: 20px;
+    width: 20px;
+}
+
+#reviewStars-input #star-0 {
+    left: 0px;
+}
+#reviewStars-input #star-1 {
+    left: 33px;
+}
+#reviewStars-input #star-2 {
+    left: 63px;
+}
+#reviewStars-input #star-3 {
+    left: 93px;
+}
+#reviewStars-input #star-4 {
+    left: 123px;
+}
+#reviewStars-input #star-5 {
+    left: 153px;
+}
+
+
+
+#wrapper{
+    width: 1600px;
+    outline: 1px solid #787274;
+    padding: 10px;
+    margin: 20px auto;
+}
+#header{
+    width: 1600px;
+    height: 80px;
+    background: #25b33f;
+    margin-bottom: 10px;
+    margin: 20px 100px 20px 0px;
+}
+#sidebar{
+    height: 80px;
+    background-color: #2ff553;
+    margin-bottom: 10px;
+    width: 200px;
+    float: left;
+
+}
+#content{
+    height: 1000px;
+    background: #75B781;
+    margin: 20px 100px 20px 0px;
+    width: 1600px;
+
+}
+#footer{
+    height: 80px;
+    width: 1600px;
+    background: #41874e;
+    margin: 20px 100px 20px 0px;
+}

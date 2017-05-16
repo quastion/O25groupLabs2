@@ -15,64 +15,51 @@ import java.sql.SQLException;
 @WebServlet(name = "ServletAddPost", urlPatterns = "/addpost")
 public class ServletAddPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String table = String.valueOf(request.getParameter("table"));
-        if (table.equals("film")){
-            //String pr = request.getParameter("idTypeOfFilm");
-            Film film = new Film(Integer.valueOf(request.getParameter("priceFilm")), Integer.valueOf(request.getParameter("sensibility")),
-                    Integer.valueOf(request.getParameter("numFrame")), Date.valueOf(request.getParameter("dateStartingSnapshot")),
-                    Date.valueOf(request.getParameter("dateManifestation")), request.getParameter("placeManifestation"),
-                    request.getParameter("placeStorage"), Integer.valueOf(request.getParameter("idTypeOfFilm")) );
-            try {
+        try {
+            String table = String.valueOf(request.getParameter("table"));
+            if (table.equals("film")){
+                //String pr = request.getParameter("idTypeOfFilm");
+                Film film = new Film(Integer.valueOf(request.getParameter("priceFilm")), Integer.valueOf(request.getParameter("sensibility")),
+                        Integer.valueOf(request.getParameter("numFrame")), Date.valueOf(request.getParameter("dateStartingSnapshot")),
+                        Date.valueOf(request.getParameter("dateManifestation")), request.getParameter("placeManifestation"),
+                        request.getParameter("placeStorage"), Integer.valueOf(request.getParameter("idTypeOfFilm")) );
+
                 FilmDAO.addFilm(film);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
-        }
-        if (table.equals("member")){
-            //String pr = request.getParameter("idTypeOfFilm");
-            Member member = new Member(request.getParameter("surname"), request.getParameter("name"),
-                    request.getParameter("middleName") );
-            try {
+            if (table.equals("member")){
+                //String pr = request.getParameter("idTypeOfFilm");
+                Member member = new Member(request.getParameter("surname"), request.getParameter("name"),
+                        request.getParameter("middleName") );
+
                 MemberDAO.addFilm(member);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+
             }
-        }
-        if (table.equals("frame")){
-            //String pr = request.getParameter("idTypeOfFilm");
-            Frame frame = new Frame(Date.valueOf(request.getParameter("dateFrame")), request.getParameter("placeFrame"),
-                    request.getParameter("theme"), Integer.valueOf(request.getParameter("idFilm")) );
-            try {
+            if (table.equals("frame")){
+                //String pr = request.getParameter("idTypeOfFilm");
+                Frame frame = new Frame(Date.valueOf(request.getParameter("dateFrame")), request.getParameter("placeFrame"),
+                        request.getParameter("theme"), Integer.valueOf(request.getParameter("idFilm")) );
+
                 FrameDAO.addFilm(frame);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+
             }
-        }
-        if (table.equals("photo")){
-            //String pr = request.getParameter("idTypeOfFilm");
-            Photo photo = null;
-            try {
+            if (table.equals("photo")) {
+                Photo photo = null;
+
                 photo = new Photo(Date.valueOf(request.getParameter("datePrinting")),
                         Integer.valueOf(request.getParameter("size")), Integer.valueOf(request.getParameter("number")),
                         Integer.valueOf(request.getParameter("pricePhoto")), request.getParameter("placePhoto"),
                         Integer.valueOf(request.getParameter("idDeveloper")), Integer.valueOf(request.getParameter("idPaper")),
                         Integer.valueOf(request.getParameter("idFrame")));
 
-                        System.out.println("ЖЖЖЖЖЖЖЖЖЖ");
-
-                        PhotoDAO.addPhoto(photo);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                PhotoDAO.addPhoto(photo);
             }
+            response.sendRedirect("/show?table="+table);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+
 
     }
 

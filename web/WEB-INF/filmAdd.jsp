@@ -10,18 +10,18 @@
 <html>
 <head>
     <title>Добавление пленку</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 <div>
     <div id = "header">
-        <h1>Фототека<h1>
+        <h1>Фототека</h1>
     </div>
     <div id = "content">
         <form action="/addpost?table=film" method="POST">
             <ul>
-                <li><a href = "#">Главная</a> </li>
+                <li><a href = "/menu">Главная</a> </li>
                 <li><a><input type="submit" value="Добавить"></a> </li>
             </ul>
 

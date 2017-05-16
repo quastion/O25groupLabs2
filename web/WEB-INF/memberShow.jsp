@@ -10,17 +10,17 @@
 <html>
 <head>
     <title>Обзор участников</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 <div>
     <div id = "header">
-        <h1>Фототека<h1>
+        <h1>Фототека</h1>
     </div>
     <div id = "content">
         <ul>
-            <li><a href = "#">Главная</a> </li>
+            <li><a href = "/menu">Главная</a> </li>
         </ul>
         <table class="simple-little-table" style = "padding: 10px 0 10px 0;"  cellspacing='0'>
             <tr>

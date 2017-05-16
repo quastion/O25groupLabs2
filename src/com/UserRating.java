@@ -6,9 +6,10 @@ public class UserRating {
     private int idUser;
     private int idFilm;
     private int rating;
-    public User() { }
+    public UserRating() { }
 
-    public Film(int idUser, int idFilm, int rating) {
+
+    public UserRating(int idUser, int idFilm, int rating) {
         this.idUser = idUser;
         this.idFilm = idFilm;
         this.rating = rating;

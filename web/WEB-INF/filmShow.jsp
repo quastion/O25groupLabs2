@@ -10,17 +10,17 @@
 <html>
 <head>
     <title>Пленки</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 <div>
     <div id = "header">
-        <h1>Фототека<h1>
+        <h1>Фототека</h1>
     </div>
     <div id = "content">
         <ul>
-            <li><a href = "#">Главная</a> </li>
+            <li><a href = "/menu">Главная</a> </li>
         </ul>
         <table class="simple-little-table"
                style = "padding: 10px 0 10px 0;" cellspacing='0'>
@@ -47,7 +47,7 @@
                     <td>${post.placeManifestation}</td>
                     <td>${post.placeStorage}</td>
                     <td>${post.idTypeOfFilm}</td>
-                    <td>${post.rating}</td>
+                    <%--<td>${post.rating}</td>--%>
                     <td>
                         <div id="reviewStars-input" style="width:150px;">
                             <input id="star-4" type="radio" name="reviewStars"/>
@@ -63,6 +63,24 @@
                             <label title="poor" for="star-1"></label>
 
                             <input id="star-0" type="radio" name="reviewStars"/>
+                            <label title="bad" for="star-0"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="1reviewStars-input" style="width:150px;">
+                            <input id="1star-4" type="radio" name="reviewStars"/>
+                            <label title="gorgeous" for="star-4"></label>
+
+                            <input id="1star-3" type="radio" name="reviewStars"/>
+                            <label title="good" for="star-3"></label>
+
+                            <input id="1star-2" type="radio" name="reviewStars"/>
+                            <label title="regular" for="star-2"></label>
+
+                            <input id="1star-1" type="radio" name="reviewStars"/>
+                            <label title="poor" for="star-1"></label>
+
+                            <input id="1star-0" type="radio" name="reviewStars"/>
                             <label title="bad" for="star-0"></label>
                         </div>
                     </td>
