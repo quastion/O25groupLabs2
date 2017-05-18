@@ -15,6 +15,7 @@ public class Film {
     private String placeManifestation;
     private String placeStorage;
     private int idTypeOfFilm;
+    private String typeOfFilm;
 
     public Film() { }
 
@@ -23,7 +24,7 @@ public class Film {
         this.placeStorage = placeStorage;
     }
 
-    public Film(int idFilm, int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, int idTypeOfFilm) {
+    public Film(int idFilm, int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, String typeOfFilm) {
         this.idFilm = idFilm;
         this.priceFilm = priceFilm;
         this.sensibility = sensibility;
@@ -32,7 +33,7 @@ public class Film {
         this.dateManifestation = dateManifestation;
         this.placeManifestation = placeManifestation;
         this.placeStorage = placeStorage;
-        this.idTypeOfFilm = idTypeOfFilm;
+        this.typeOfFilm = typeOfFilm;
     }
     public Film( int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, int idTypeOfFilm) {
         this.priceFilm = priceFilm;
@@ -43,6 +44,14 @@ public class Film {
         this.placeManifestation = placeManifestation;
         this.placeStorage = placeStorage;
         this.idTypeOfFilm = idTypeOfFilm;
+    }
+
+    public Film(int idFilm, int sensibility, int numFrame, Date dateStartingSnapshot, String placeManifestation) {
+        this.idFilm = idFilm;
+        this.sensibility = sensibility;
+        this.numFrame = numFrame;
+        this.dateStartingSnapshot = dateStartingSnapshot;
+        this.placeManifestation = placeManifestation;
     }
 
     public int getIdFilm() {
@@ -131,5 +140,13 @@ public class Film {
                 ", placeStorage='" + placeStorage + '\'' +
                 ", idTypeOfFilm=" + idTypeOfFilm +
                 '}';
+    }
+
+    public String getTypeOfFilm() {
+        return typeOfFilm;
+    }
+
+    public void setTypeOfFilm(String typeOfFilm) {
+        this.typeOfFilm = typeOfFilm;
     }
 }

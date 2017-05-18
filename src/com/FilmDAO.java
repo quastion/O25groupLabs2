@@ -11,7 +11,7 @@ import java.util.Locale;
 public class FilmDAO extends DAO {
 
     public static List<Film> getFilms() throws SQLException, ClassNotFoundException {
-        try( ResultSet rs = FilmDAO.getConnection().createStatement().executeQuery("SELECT * from FILM") ){
+        try( ResultSet rs = FilmDAO.getConnection().createStatement().executeQuery("SELECT F.ID_FILM, F.PRICE_FILM, F.SENSIBILITY, F.NUM_FRAMES, F.DATE_STARTING_SNAPSHOT, F.DATE_MANIFESTATION, F.PLACE_MANIFESTATION, F.PLACE_STORAGE, T.TYPE_FILM from FILM F, TYPEOFFILM T WHERE F.ID_TYPE_OF_FILM = T.ID_TYPE_OF_FILM") ){
             ArrayList<Film> films = new ArrayList<>();
             while (rs.next()){
                 films.add(new Film(
@@ -19,13 +19,13 @@ public class FilmDAO extends DAO {
                         rs.getInt(3), rs.getInt(4),
                         rs.getDate(5), rs.getDate(6),
                         rs.getString(7), rs.getString(8),
-                        rs.getInt(9)
+                        rs.getString(9)
                 ));
-                System.out.println(rs.getInt(1)+"   "+rs.getInt(2)
-                        +"   "+rs.getInt(3)+"   "+rs.getInt(4)
-                        +"   "+rs.getDate(5)+"    "+rs.getDate(6)
-                        +"   "+rs.getString(7)+"   "+rs.getString(8)
-                        +"   "+ rs.getInt(9));
+//                System.out.println(rs.getInt(1)+"   "+rs.getInt(2)
+//                        +"   "+rs.getInt(3)+"   "+rs.getInt(4)
+//                        +"   "+rs.getDate(5)+"    "+rs.getDate(6)
+//                        +"   "+rs.getString(7)+"   "+rs.getString(8)
+//                        +"   "+ rs.getString(9));
             }
             return films;
         }

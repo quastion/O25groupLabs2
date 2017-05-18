@@ -22,7 +22,7 @@
         <form action="/addpost?table=frame" method="POST">
             <ul>
                 <li><a href = "/menu">Главная</a> </li>
-                <li><a href="/addpost?table=frame" method="POST">Добавить</a>
+                <li><a><input type="submit" value="Добавить"></a> </li>
             </ul>
 
             <table class="simple-little-table"

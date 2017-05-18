@@ -16,50 +16,12 @@ public class Photo {
     private int pricePhoto;
     private String placePhoto;
     private int idDeveloper;
+    private String developer;
     private int idPaper;
+    private String paper;
     private int idFrame;
     private int idFilm;
-
-
-    public int getIdPhoto() {
-        return idPhoto;
-    }
-
-    public void setIdPhoto(int idPhoto) {
-        this.idPhoto = idPhoto;
-    }
-
-    public Date getDatePrinting() {
-        return datePrinting;
-    }
-
-    public void setDatePrinting(Date datePrinting) {
-        this.datePrinting = datePrinting;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public int getPricePhoto() {
-        return pricePhoto;
-    }
-
-    public void setPricePhoto(int pricePhoto) {
-        this.pricePhoto = pricePhoto;
-    }
+    private Frame frame;
 
     public String getPlacePhoto() {
         return placePhoto;
@@ -133,5 +95,92 @@ public class Photo {
             this.idFilm = resultSet.getInt(1);
         }
 
+    }
+    public Photo(int idPhoto, Date datePrinting, int size, int number, int pricePhoto, String placePhoto, String developer, String paper, int idFrame, int idFilm) throws SQLException, ClassNotFoundException {
+        this.idPhoto = idPhoto;
+        this.datePrinting = datePrinting;
+        this.size = size;
+        this.number = number;
+        this.pricePhoto = pricePhoto;
+        this.placePhoto = placePhoto;
+        this.developer = developer;
+        this.paper = paper;
+        this.idFrame = idFrame;
+        this.idFilm = idFilm;
+        //int idFilm;
+        try(PreparedStatement prepareStatement = PhotoDAO.getConnection().
+                prepareStatement("SELECT ID_FILM, DATE_FRAME, PLACE_FRAME, THEME from FRAME WHERE ID_FRAME = ?")){
+            prepareStatement.setInt(1, idFrame);
+            ResultSet resultSet = prepareStatement.executeQuery();
+            resultSet.next();
+            //System.out.println(resultSet.getInt(1));
+            this.idFilm = resultSet.getInt(1);
+            this.frame = new Frame(resultSet.getDate(2), resultSet.getString(3), resultSet.getString(4), this.idFilm);
+        }
+
+    }
+
+    public int getIdPhoto() {
+        return idPhoto;
+    }
+
+    public void setIdPhoto(int idPhoto) {
+        this.idPhoto = idPhoto;
+    }
+
+    public Date getDatePrinting() {
+        return datePrinting;
+    }
+
+    public void setDatePrinting(Date datePrinting) {
+        this.datePrinting = datePrinting;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getPricePhoto() {
+        return pricePhoto;
+    }
+
+    public void setPricePhoto(int pricePhoto) {
+        this.pricePhoto = pricePhoto;
+    }
+
+    public String getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(String developer) {
+        this.developer = developer;
+    }
+
+    public String getPaper() {
+        return paper;
+    }
+
+    public void setPaper(String paper) {
+        this.paper = paper;
+    }
+
+    public Frame getFrame() {
+        return frame;
+    }
+
+    public void setFrame(Frame frame) {
+        this.frame = frame;
     }
 }

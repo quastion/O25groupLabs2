@@ -29,10 +29,10 @@
                 <td>Количество</td>
                 <td>Цена</td>
                 <td>Хранение</td>
-                <td>Код производителя</td>
-                <td>Код бумаги</td>
-                <td>Код кадра</td>
-                <td>Код пленки</td>
+                <td>Производитель</td>
+                <td>Бумага</td>
+                <td>Кадра</td>
+
                 <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
@@ -42,10 +42,9 @@
                     <td>${post.number}</td>
                     <td>${post.pricePhoto}</td>
                     <td>${post.placePhoto}</td>
-                    <td>${post.idDeveloper}</td>
-                    <td>${post.idPaper}</td>
-                    <td>${post.idFrame}</td>
-                    <td>${post.idFilm}</td>
+                    <td>${post.developer}</td>
+                    <td>${post.paper}</td>
+                    <td>Тема: ${post.frame.theme}, место: ${post.frame.placeFrame}, дата: ${post.frame.dateFrame}</td>
                     <td><a href="/delete?table=photo&id=${post.idPhoto}">Удалить</a> </td>
                 </tr>
             </c:forEach>

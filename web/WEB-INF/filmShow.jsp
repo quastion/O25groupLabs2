@@ -16,7 +16,7 @@
 <body>
 <div>
     <div id = "header">
-        <h1>Фототека</h1>
+        <a href="/menu" class="without_"><h1>Фототека</h1></a>
     </div>
     <div id = "content">
         <ul>
@@ -46,7 +46,7 @@
                     <td>${post.dateManifestation}</td>
                     <td>${post.placeManifestation}</td>
                     <td>${post.placeStorage}</td>
-                    <td>${post.idTypeOfFilm}</td>
+                    <td>${post.typeOfFilm}</td>
                     <%--<td>${post.rating}</td>--%>
                     <td>
                         <div id="reviewStars-input" style="width:150px;">

@@ -35,10 +35,11 @@ public class ServletAddPost extends HttpServlet {
 
             }
             if (table.equals("frame")){
-                //String pr = request.getParameter("idTypeOfFilm");
+                System.out.println(""+ Date.valueOf(request.getParameter("dateFrame"))+" "+ request.getParameter("placeFrame")+" "+
+                        request.getParameter("theme")+" "+Integer.valueOf(request.getParameter("idFilm")));
                 Frame frame = new Frame(Date.valueOf(request.getParameter("dateFrame")), request.getParameter("placeFrame"),
                         request.getParameter("theme"), Integer.valueOf(request.getParameter("idFilm")) );
-
+                System.out.println("AA "+frame);
                 FrameDAO.addFilm(frame);
 
             }
@@ -64,6 +65,6 @@ public class ServletAddPost extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("get");
     }
 }

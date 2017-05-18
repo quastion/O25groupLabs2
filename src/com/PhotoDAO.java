@@ -12,21 +12,21 @@ import java.util.List;
 public class PhotoDAO extends DAO {
 
     public static List<Photo> getFilms() throws SQLException, ClassNotFoundException {
-        try( ResultSet rs = PhotoDAO.getConnection().createStatement().executeQuery("SELECT * from PHOTO") ){
+        try( ResultSet rs = PhotoDAO.getConnection().createStatement().executeQuery("SELECT P.ID_PHOTO, P.DATE_PRINTING, P.SIZE_, P.NUMBER_, P.PRICE_PHOTO, P.PLACE_PHOTO, D.NAME, B.TYPE_PAPER, P.ID_FRAME, P.ID_FILM from PHOTO P, DEVELOPER D, PAPER B WHERE P.ID_DEVELOPER = D.ID_DEVELOPER AND P.ID_PAPER = B.ID_PAPER") ){
             ArrayList<Photo> photos = new ArrayList<>();
             while (rs.next()){
                 photos.add(new Photo(
                         rs.getInt(1), rs.getDate(2),
                         rs.getInt(3), rs.getInt(4),
                         rs.getInt(5), rs.getString(6),
-                        rs.getInt(7), rs.getInt(8),
+                        rs.getString(7), rs.getString(8),
                         rs.getInt(9), rs.getInt(10)
                 ));
-                System.out.println(rs.getInt(1)+"  "+rs.getDate(2)+"  "+
-                        rs.getInt(3)+"  "+ rs.getInt(4)+"  "+
-                        rs.getInt(5)+"  "+ rs.getString(6)+"  "+
-                        rs.getInt(7)+"  "+ rs.getInt(8)+"  "+
-                        rs.getInt(9)+"  "+rs.getInt(10));
+//                System.out.println(rs.getInt(1)+"  "+rs.getDate(2)+"  "+
+//                        rs.getInt(3)+"  "+ rs.getInt(4)+"  "+
+//                        rs.getInt(5)+"  "+ rs.getString(6)+"  "+
+//                        rs.getInt(7)+"  "+ rs.getInt(8)+"  "+
+//                        rs.getInt(9)+"  "+rs.getInt(10));
 
             }
             return photos;

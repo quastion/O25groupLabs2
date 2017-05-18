@@ -19,10 +19,10 @@
         <h1>Фототека</h1>
     </div>
     <div id = "content">
-        <form action="/addpost?table=film" method="POST">
+        <form action="/addpost?table=member" method="POST">
             <ul>
                 <li><a href = "/menu">Главная</a> </li>
-                <li><a href="/addpost?table=member" method="POST">Добавить</a>
+                <li><a><input type="submit" value="Добавить"></a> </li>
             </ul>
 
             <table class="simple-little-table" style = "padding: 10px 0 10px 0;" cellspacing='0'>

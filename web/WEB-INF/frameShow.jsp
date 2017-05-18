@@ -29,13 +29,20 @@
                 <td>Хранение</td>
                 <td>Тема</td>
                 <td>Код пленки</td>
+                <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td>${post.dateFrame}</td>
                     <td>${post.placeFrame}</td>
                     <td>${post.theme}</td>
-                    <td>${post.idFilm}</td>
+                    <td>
+                        Чувств-ть: ${post.film.sensibility},
+                        кол-во кадров: ${post.film.numFrame},
+                        дата съемки: ${post.film.dateStartingSnapshot},
+                        место проявления: ${post.film.placeManifestation}
+                    </td>
+                    <td><a href="/delete?table=frame&id=${post.idFrame}">Удалить</a> </td>
                 </tr>
             </c:forEach>
         </table>
