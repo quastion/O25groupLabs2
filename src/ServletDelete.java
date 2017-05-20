@@ -16,7 +16,7 @@ public class ServletDelete extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        String table = String.valueOf(request.getParameter("table"));
+        String table = request.getParameter("table");
         try {
             if (table.equals("film")){
                 int id = Integer.valueOf(request.getParameter("id"));
@@ -24,8 +24,9 @@ public class ServletDelete extends javax.servlet.http.HttpServlet {
                 response.sendRedirect("/show?table="+table);
             }
             if (table.equals("frame")){
-                request.setAttribute("posts", FrameDAO.getFilms());
-                request.getRequestDispatcher("WEB-INF/frameShow.jsp").forward(request, response);
+                int id = Integer.valueOf(request.getParameter("id"));
+                FrameDAO.deleteFilm(id);
+                response.sendRedirect("/show?table="+table);
             }
             if (table.equals("member")){
                 int id = Integer.valueOf(request.getParameter("id"));

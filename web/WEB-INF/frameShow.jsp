@@ -28,7 +28,7 @@
                 <td>Дата снимка</td>
                 <td>Хранение</td>
                 <td>Тема</td>
-                <td>Код пленки</td>
+                <td>Пленка</td>
                 <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">

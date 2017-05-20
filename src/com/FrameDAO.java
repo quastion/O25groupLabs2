@@ -29,7 +29,7 @@ public class FrameDAO extends DAO {
     }
 
     public static void deleteFilm(int id)throws SQLException, ClassNotFoundException{
-        try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from FRAME WHERE idFrame = ?") ){
+        try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from FRAME WHERE ID_FRAME = ?") ){
             prepareStatement.setInt(1, id);
             prepareStatement.executeUpdate();
         }

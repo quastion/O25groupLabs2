@@ -32,9 +32,9 @@
                     <td>Количество</td>
                     <td>Цена</td>
                     <td>Хранение</td>
-                    <td>Код производителя</td>
-                    <td>Код бумаги</td>
-                    <td>Код пленки</td>
+                    <td>Производитель</td>
+                    <td>Бумаги</td>
+                    <td>Пленка</td>
                 </tr><!-- Table Header -->
                 <tr>
                     <td><input name ="datePrinting" type="date"></td>

@@ -31,7 +31,7 @@
                     <td>Дата снимка</td>
                     <td>Хранение</td>
                     <td>Тема</td>
-                    <td>Код пленки</td>
+                    <td>Пленки</td>
                 </tr><!-- Table Header -->
                 <tr>
                     <td><input name ="dateFrame" type="date"></td>
