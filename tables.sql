@@ -1,4 +1,4 @@
-CREATE TABLE Developer
+﻿CREATE TABLE Developer
 (
 	id_developer         INTEGER NOT NULL ,
 	Name                 VARCHAR2(100) NOT NULL 
@@ -168,3 +168,49 @@ ALTER TABLE Photo
 
 ALTER TABLE Photo
 	ADD (CONSTRAINT R_7 FOREIGN KEY (id_frame, id_film) REFERENCES Frame (id_frame, id_film));
+
+
+-- Каскадное удаление
+-- Удаление прежних ограничений FOREIGN KEY
+ALTER TABLE Film
+	drop CONSTRAINT R_3;
+
+ALTER TABLE Frame
+	drop CONSTRAINT R_4;
+
+ALTER TABLE MemberOfFrame
+	drop CONSTRAINT R_5;
+
+ALTER TABLE MemberOfFrame
+	drop CONSTRAINT R_6;
+
+ALTER TABLE Photo
+	drop CONSTRAINT R_1 ;
+
+ALTER TABLE Photo
+	drop CONSTRAINT R_2 ;
+
+ALTER TABLE Photo
+	drop CONSTRAINT R_7;
+-- Добавление новых ограничений со свойством ON DELETE CASCADE
+ALTER TABLE Film
+	ADD (CONSTRAINT R_3 FOREIGN KEY (id_type_of_film) REFERENCES TypeOfFilm (id_type_of_film) ON DELETE CASCADE);
+
+ALTER TABLE Frame
+	ADD (CONSTRAINT R_4 FOREIGN KEY (id_film) REFERENCES Film (id_film) ON DELETE CASCADE);
+
+ALTER TABLE MemberOfFrame
+	ADD (CONSTRAINT R_5 FOREIGN KEY (id_member) REFERENCES Member (id_member) ON DELETE CASCADE);
+
+ALTER TABLE MemberOfFrame
+	ADD (CONSTRAINT R_6 FOREIGN KEY (id_frame, id_film) REFERENCES Frame (id_frame, id_film) ON DELETE CASCADE);
+
+ALTER TABLE Photo
+	ADD (CONSTRAINT R_1 FOREIGN KEY (id_developer) REFERENCES Developer (id_developer) ON DELETE CASCADE);
+
+ALTER TABLE Photo
+	ADD (CONSTRAINT R_2 FOREIGN KEY (id_paper) REFERENCES Paper (id_paper) ON DELETE CASCADE);
+
+ALTER TABLE Photo
+	ADD (CONSTRAINT R_7 FOREIGN KEY (id_frame, id_film) REFERENCES Frame (id_frame, id_film) ON DELETE CASCADE);
+
