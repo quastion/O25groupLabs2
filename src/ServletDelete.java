@@ -21,23 +21,20 @@ public class ServletDelete extends javax.servlet.http.HttpServlet {
             if (table.equals("film")){
                 int id = Integer.valueOf(request.getParameter("id"));
                 FilmDAO.deleteFilm(id);
-                response.sendRedirect("/show?table="+table);
             }
             if (table.equals("frame")){
                 int id = Integer.valueOf(request.getParameter("id"));
                 FrameDAO.deleteFrame(id);
-                response.sendRedirect("/show?table="+table);
             }
             if (table.equals("member")){
                 int id = Integer.valueOf(request.getParameter("id"));
                 MemberDAO.deleteMember(id);
-                response.sendRedirect("/show?table="+table);
             }
             if (table.equals("photo")){
                 int id = Integer.valueOf(request.getParameter("id"));
                 PhotoDAO.deletePhoto(id);
-                response.sendRedirect("/show?table="+table);
             }
+            response.sendRedirect("/show?table="+table);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

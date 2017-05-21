@@ -21,11 +21,6 @@ public class FilmDAO extends DAO {
                         rs.getString(7), rs.getString(8),
                         rs.getString(9)
                 ));
-//                System.out.println(rs.getInt(1)+"   "+rs.getInt(2)
-//                        +"   "+rs.getInt(3)+"   "+rs.getInt(4)
-//                        +"   "+rs.getDate(5)+"    "+rs.getDate(6)
-//                        +"   "+rs.getString(7)+"   "+rs.getString(8)
-//                        +"   "+ rs.getString(9));
             }
             return films;
         }
@@ -49,7 +44,6 @@ public class FilmDAO extends DAO {
     public static void addFilm(Film film) throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = FilmDAO.getConnection().
                 prepareStatement("INSERT INTO FILM VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)") ){
-            //INSERT INTO FILM VALUES (null, 22, 33, 44, TO_DATE('11-12-2000'), TO_DATE('11-12-2000'), 'ТОльятти','ТОльятти', 1005);
             prepareStatement.setInt(1, film.getPriceFilm());
             prepareStatement.setInt(2, film.getSensibility());
             prepareStatement.setInt(3, film.getNumFrame());
@@ -68,11 +62,7 @@ public class FilmDAO extends DAO {
             prepareStatement.setInt(1, id);
             ResultSet rs = prepareStatement.executeQuery();
             rs.next();
-//            System.out.println(rs.getInt(1)+"   "+rs.getInt(2)
-//                    +"   "+rs.getInt(3)+"   "+rs.getInt(4)
-//                    +"   "+rs.getDate(5)+"    "+rs.getDate(6)
-//                    +"   "+rs.getString(7)+"   "+rs.getString(8)
-//                    +"   "+ rs.getString(9) +"  "+  rs.getInt(10));
+
             Film film = new Film(
                         rs.getInt(1), rs.getInt(2),
                         rs.getInt(3), rs.getInt(4),
@@ -80,7 +70,6 @@ public class FilmDAO extends DAO {
                         rs.getString(7), rs.getString(8),
                         rs.getString(9),  rs.getInt(10)
                 );
-
 
             return film;
         }

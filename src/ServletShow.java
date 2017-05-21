@@ -24,15 +24,15 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
                 request.getRequestDispatcher("WEB-INF/filmShow.jsp").forward(request, response);
             }
             if (table.equals("frame")){
-                request.setAttribute("posts", FrameDAO.getFrame());
+                request.setAttribute("posts", FrameDAO.getFrames());
                 request.getRequestDispatcher("WEB-INF/frameShow.jsp").forward(request, response);
             }
             if (table.equals("member")){
-                request.setAttribute("posts", MemberDAO.getMember());
+                request.setAttribute("posts", MemberDAO.getMembers());
                 request.getRequestDispatcher("WEB-INF/memberShow.jsp").forward(request, response);
             }
             if (table.equals("photo")){
-                request.setAttribute("posts", PhotoDAO.getPhoto());
+                request.setAttribute("posts", PhotoDAO.getPhotos());
                 request.getRequestDispatcher("WEB-INF/photoShow.jsp").forward(request, response);
             }
         } catch (SQLException e) {

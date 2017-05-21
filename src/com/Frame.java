@@ -32,11 +32,6 @@ public class Frame {
             resultSet.next();
             this.film = new Film(idFilm, resultSet.getInt(1), resultSet.getInt(2),
                     resultSet.getDate(3), resultSet.getString(4) );
-//                System.out.println(rs.getInt(1)+"   "+rs.getInt(2)
-//                        +"   "+rs.getInt(3)+"   "+rs.getInt(4)
-//                        +"   "+rs.getDate(5)+"    "+rs.getDate(6)
-//                        +"   "+rs.getString(7)+"   "+rs.getString(8)
-//                        +"   "+ rs.getString(9));
             }
         System.out.println(this);
     }

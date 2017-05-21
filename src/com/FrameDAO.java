@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class FrameDAO extends DAO {
 
-    public static List<Frame> getFrame() throws SQLException, ClassNotFoundException {
+    public static List<Frame> getFrames() throws SQLException, ClassNotFoundException {
         try( ResultSet rs = FrameDAO.getConnection().prepareStatement("SELECT * from Frame").executeQuery() ){
             ArrayList<Frame> frames = new ArrayList<>();
             while (rs.next()){
@@ -20,9 +20,6 @@ public class FrameDAO extends DAO {
                         rs.getString(3), rs.getString(4),
                         rs.getInt(5)
                 ));
-                System.out.println(rs.getInt(1)+"  "+ rs.getDate(2)+"  "+
-                                rs.getString(3)+"  "+ rs.getString(4)+"  "+
-                        rs.getInt(5));
             }
             return frames;
         }
@@ -42,6 +39,34 @@ public class FrameDAO extends DAO {
             prepareStatement.setString(2, frame.getPlaceFrame());
             prepareStatement.setString(3, frame.getTheme());
             prepareStatement.setInt(4, frame.getIdFilm());
+            prepareStatement.executeUpdate();
+        }
+    }
+
+    public static Frame getFrame(int id) throws SQLException, ClassNotFoundException {
+        try(PreparedStatement prepareStatement = FrameDAO.getConnection().
+                prepareStatement("SELECT * from Frame where ID_FRAME = ?") ){
+            prepareStatement.setInt(1, id);
+
+            ResultSet rs = prepareStatement.executeQuery();
+            rs.next();
+            Frame frame = new Frame(
+                    rs.getInt(1), rs.getDate(2),
+                    rs.getString(3), rs.getString(4),
+                    rs.getInt(5)
+            );
+            return frame;
+        }
+    }
+
+    public static void updateFrame(Frame frame) throws SQLException, ClassNotFoundException {
+        try( PreparedStatement prepareStatement = FrameDAO.getConnection().
+                prepareStatement("UPDATE FRAME SET DATE_FRAME = ?, PLACE_FRAME = ?, THEME = ?, ID_FILM = ? WHERE ID_FRAME = ?") ){
+            prepareStatement.setDate(1, frame.getDateFrame());
+            prepareStatement.setString(2, frame.getPlaceFrame());
+            prepareStatement.setString(3, frame.getTheme());
+            prepareStatement.setInt(4, frame.getIdFilm());
+            prepareStatement.setInt(5, frame.getIdFrame());
             prepareStatement.executeUpdate();
         }
     }

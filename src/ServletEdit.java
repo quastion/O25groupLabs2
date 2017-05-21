@@ -22,34 +22,35 @@ public class ServletEdit extends javax.servlet.http.HttpServlet {
                 int id = Integer.valueOf(request.getParameter("id"));
                 request.setAttribute("film", FilmDAO.getFilm(id));
                 request.setAttribute("posts", FilmDAO.getTypeOfFilm());
+
                 request.getRequestDispatcher("WEB-INF/filmEdit.jsp").forward(request, response);
             }
             if (table.equals("frame")){
                 int id = Integer.valueOf(request.getParameter("id"));
-                FrameDAO.deleteFrame(id);
-                response.sendRedirect("/show?table="+table);
+                request.setAttribute("frame", FrameDAO.getFrame(id));
+                request.setAttribute("posts", FilmDAO.getFilms());
+
+                request.getRequestDispatcher("WEB-INF/frameEdit.jsp").forward(request, response);
             }
             if (table.equals("member")){
                 int id = Integer.valueOf(request.getParameter("id"));
-                MemberDAO.deleteMember(id);
-                response.sendRedirect("/show?table="+table);
+                request.setAttribute("member", MemberDAO.getMember(id));
+
+                request.getRequestDispatcher("WEB-INF/memberEdit.jsp").forward(request, response);
             }
             if (table.equals("photo")){
                 int id = Integer.valueOf(request.getParameter("id"));
-                PhotoDAO.deletePhoto(id);
-                response.sendRedirect("/show?table="+table);
+                request.setAttribute("photo", PhotoDAO.getPhoto(id));
+                request.setAttribute("developers", PhotoDAO.getDevelopers());
+                request.setAttribute("papers", PhotoDAO.getPapers());
+                request.setAttribute("frames", FrameDAO.getFrames());
+
+                request.getRequestDispatcher("WEB-INF/photoEdit.jsp").forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
     }
 }

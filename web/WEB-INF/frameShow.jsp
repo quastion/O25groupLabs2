@@ -29,6 +29,7 @@
                 <td>Хранение</td>
                 <td>Тема</td>
                 <td>Пленка</td>
+                <td>Редактировать</td>
                 <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
@@ -42,7 +43,8 @@
                         дата съемки: ${post.film.dateStartingSnapshot},
                         место проявления: ${post.film.placeManifestation}
                     </td>
-                    <td><a href="/delete?table=frame&id=${post.idFrame}">Удалить</a> </td>
+                    <td><a href="/edit?table=frame&id=${post.idFrame}">Редактировать</a></td>
+                    <td><a href="/delete?table=frame&id=${post.idFrame}">Удалить</a></td>
                 </tr>
             </c:forEach>
         </table>

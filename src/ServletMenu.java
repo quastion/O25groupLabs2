@@ -17,8 +17,5 @@ public class ServletMenu extends javax.servlet.http.HttpServlet {
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/menu.jsp").forward(request, response);
-
-
-
     }
 }

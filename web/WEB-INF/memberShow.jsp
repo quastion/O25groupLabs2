@@ -27,6 +27,7 @@
                 <td>Фамилия</td>
                 <td>Имя</td>
                 <td>Отчество</td>
+                <td>Редактировать</td>
                 <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
@@ -34,6 +35,7 @@
                     <td>${post.surname}</td>
                     <td>${post.name}</td>
                     <td>${post.middleName}</td>
+                    <td><a href="/edit?table=member&id=${post.idMember}">Редактировать</a> </td>
                     <td><a href="/delete?table=member&id=${post.idMember}">Удалить</a> </td>
                 </tr>
             </c:forEach>

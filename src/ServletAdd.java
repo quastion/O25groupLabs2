@@ -31,7 +31,7 @@ public class ServletAdd extends javax.servlet.http.HttpServlet {
             if (table.equals("photo")){
                 request.setAttribute("developers", PhotoDAO.getDevelopers());
                 request.setAttribute("papers", PhotoDAO.getPapers());
-                request.setAttribute("frames", FrameDAO.getFrame());
+                request.setAttribute("frames", FrameDAO.getFrames());
                 request.getRequestDispatcher("WEB-INF/photoAdd.jsp").forward(request, response);
             }
         } catch (SQLException e) {

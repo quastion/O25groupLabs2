@@ -107,18 +107,43 @@ public class Photo {
         this.paper = paper;
         this.idFrame = idFrame;
         this.idFilm = idFilm;
-        //int idFilm;
+
         try(PreparedStatement prepareStatement = PhotoDAO.getConnection().
                 prepareStatement("SELECT ID_FILM, DATE_FRAME, PLACE_FRAME, THEME from FRAME WHERE ID_FRAME = ?")){
             prepareStatement.setInt(1, idFrame);
             ResultSet resultSet = prepareStatement.executeQuery();
             resultSet.next();
-            //System.out.println(resultSet.getInt(1));
+
             this.idFilm = resultSet.getInt(1);
             this.frame = new Frame(resultSet.getDate(2), resultSet.getString(3), resultSet.getString(4), this.idFilm);
         }
 
     }
+    public Photo(int idPhoto, Date datePrinting, int size, int number, int pricePhoto, String placePhoto, String developer, String paper, int idFrame, int idFilm, int idDeveloper, int idPaper) throws SQLException, ClassNotFoundException {
+        this.idPhoto = idPhoto;
+        this.datePrinting = datePrinting;
+        this.size = size;
+        this.number = number;
+        this.pricePhoto = pricePhoto;
+        this.placePhoto = placePhoto;
+        this.developer = developer;
+        this.paper = paper;
+        this.idFrame = idFrame;
+        this.idFilm = idFilm;
+        this.idDeveloper = idDeveloper;
+        this.idPaper=idPaper;
+
+        try(PreparedStatement prepareStatement = PhotoDAO.getConnection().
+                prepareStatement("SELECT ID_FILM, DATE_FRAME, PLACE_FRAME, THEME from FRAME WHERE ID_FRAME = ?")){
+            prepareStatement.setInt(1, idFrame);
+            ResultSet resultSet = prepareStatement.executeQuery();
+            resultSet.next();
+            this.idFilm = resultSet.getInt(1);
+            this.frame = new Frame(resultSet.getDate(2), resultSet.getString(3), resultSet.getString(4), this.idFilm);
+        }
+
+    }
+
 
     public int getIdPhoto() {
         return idPhoto;
@@ -182,5 +207,24 @@ public class Photo {
 
     public void setFrame(Frame frame) {
         this.frame = frame;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "idPhoto=" + idPhoto +
+                ", datePrinting=" + datePrinting +
+                ", size=" + size +
+                ", number=" + number +
+                ", pricePhoto=" + pricePhoto +
+                ", placePhoto='" + placePhoto + '\'' +
+                ", idDeveloper=" + idDeveloper +
+                ", developer='" + developer + '\'' +
+                ", idPaper=" + idPaper +
+                ", paper='" + paper + '\'' +
+                ", idFrame=" + idFrame +
+                ", idFilm=" + idFilm +
+                ", frame=" + frame +
+                '}';
     }
 }

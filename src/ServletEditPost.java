@@ -18,44 +18,39 @@ public class ServletEditPost extends HttpServlet {
         try {
             String table = String.valueOf(request.getParameter("table"));
             if (table.equals("film")){
-                //String pr = request.getParameter("idTypeOfFilm");
                 Film film = new Film(Integer.valueOf(request.getParameter("priceFilm")), Integer.valueOf(request.getParameter("sensibility")),
                         Integer.valueOf(request.getParameter("numFrame")), Date.valueOf(request.getParameter("dateStartingSnapshot")),
                         Date.valueOf(request.getParameter("dateManifestation")), request.getParameter("placeManifestation"),
                         request.getParameter("placeStorage"), Integer.valueOf(request.getParameter("idTypeOfFilm")) );
                 film.setIdFilm(Integer.valueOf(request.getParameter("id")));
 
-                System.out.println(film);
                 FilmDAO.undateFilm(film);
 
             }
             if (table.equals("member")){
-                //String pr = request.getParameter("idTypeOfFilm");
                 Member member = new Member(request.getParameter("surname"), request.getParameter("name"),
                         request.getParameter("middleName") );
+                member.setIdMember(Integer.valueOf(request.getParameter("id")));
 
-                MemberDAO.addFilm(member);
-
+                MemberDAO.updateMember(member);
             }
             if (table.equals("frame")){
-                System.out.println(""+ Date.valueOf(request.getParameter("dateFrame"))+" "+ request.getParameter("placeFrame")+" "+
-                        request.getParameter("theme")+" "+Integer.valueOf(request.getParameter("idFilm")));
                 Frame frame = new Frame(Date.valueOf(request.getParameter("dateFrame")), request.getParameter("placeFrame"),
                         request.getParameter("theme"), Integer.valueOf(request.getParameter("idFilm")) );
-                System.out.println("AA "+frame);
-                FrameDAO.addFrame(frame);
+                frame.setIdFrame(Integer.valueOf(request.getParameter("id")));
+
+                FrameDAO.updateFrame(frame);
 
             }
             if (table.equals("photo")) {
-                Photo photo = null;
-
-                photo = new Photo(Date.valueOf(request.getParameter("datePrinting")),
+                Photo photo = new Photo(Date.valueOf(request.getParameter("datePrinting")),
                         Integer.valueOf(request.getParameter("size")), Integer.valueOf(request.getParameter("number")),
                         Integer.valueOf(request.getParameter("pricePhoto")), request.getParameter("placePhoto"),
                         Integer.valueOf(request.getParameter("idDeveloper")), Integer.valueOf(request.getParameter("idPaper")),
                         Integer.valueOf(request.getParameter("idFrame")));
+                photo.setIdPhoto(Integer.valueOf(request.getParameter("id")));
 
-                PhotoDAO.addPhoto(photo);
+                PhotoDAO.updatePhoto(photo);
             }
             response.sendRedirect("/show?table="+table);
         } catch (SQLException e) {
@@ -63,8 +58,6 @@ public class ServletEditPost extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

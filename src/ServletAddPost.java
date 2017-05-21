@@ -18,7 +18,6 @@ public class ServletAddPost extends HttpServlet {
         try {
             String table = String.valueOf(request.getParameter("table"));
             if (table.equals("film")){
-                //String pr = request.getParameter("idTypeOfFilm");
                 Film film = new Film(Integer.valueOf(request.getParameter("priceFilm")), Integer.valueOf(request.getParameter("sensibility")),
                         Integer.valueOf(request.getParameter("numFrame")), Date.valueOf(request.getParameter("dateStartingSnapshot")),
                         Date.valueOf(request.getParameter("dateManifestation")), request.getParameter("placeManifestation"),
@@ -27,7 +26,6 @@ public class ServletAddPost extends HttpServlet {
                 FilmDAO.addFilm(film);
             }
             if (table.equals("member")){
-                //String pr = request.getParameter("idTypeOfFilm");
                 Member member = new Member(request.getParameter("surname"), request.getParameter("name"),
                         request.getParameter("middleName") );
 
@@ -35,18 +33,14 @@ public class ServletAddPost extends HttpServlet {
 
             }
             if (table.equals("frame")){
-                System.out.println(""+ Date.valueOf(request.getParameter("dateFrame"))+" "+ request.getParameter("placeFrame")+" "+
-                        request.getParameter("theme")+" "+Integer.valueOf(request.getParameter("idFilm")));
                 Frame frame = new Frame(Date.valueOf(request.getParameter("dateFrame")), request.getParameter("placeFrame"),
                         request.getParameter("theme"), Integer.valueOf(request.getParameter("idFilm")) );
-                System.out.println("AA "+frame);
+
                 FrameDAO.addFrame(frame);
 
             }
             if (table.equals("photo")) {
-                Photo photo = null;
-
-                photo = new Photo(Date.valueOf(request.getParameter("datePrinting")),
+                Photo photo = new Photo(Date.valueOf(request.getParameter("datePrinting")),
                         Integer.valueOf(request.getParameter("size")), Integer.valueOf(request.getParameter("number")),
                         Integer.valueOf(request.getParameter("pricePhoto")), request.getParameter("placePhoto"),
                         Integer.valueOf(request.getParameter("idDeveloper")), Integer.valueOf(request.getParameter("idPaper")),
@@ -60,8 +54,6 @@ public class ServletAddPost extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

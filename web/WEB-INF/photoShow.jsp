@@ -32,7 +32,7 @@
                 <td>Производитель</td>
                 <td>Бумага</td>
                 <td>Кадр</td>
-
+                <td>Редактировать</td>
                 <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
@@ -45,6 +45,7 @@
                     <td>${post.developer}</td>
                     <td>${post.paper}</td>
                     <td>Тема: ${post.frame.theme}, место: ${post.frame.placeFrame}, дата: ${post.frame.dateFrame}</td>
+                    <td><a href="/edit?table=photo&id=${post.idPhoto}">Редактировать</a> </td>
                     <td><a href="/delete?table=photo&id=${post.idPhoto}">Удалить</a> </td>
                 </tr>
             </c:forEach>
