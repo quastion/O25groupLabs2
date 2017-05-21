@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class MemberDAO extends DAO {
 
-    public static List<Member> getFilms() throws SQLException, ClassNotFoundException {
+    public static List<Member> getMember() throws SQLException, ClassNotFoundException {
         try( ResultSet rs = MemberDAO.getConnection().prepareStatement("SELECT * from Member").executeQuery() ){
             ArrayList<Member> members = new ArrayList<>();
             while (rs.next()){
@@ -26,7 +26,7 @@ public class MemberDAO extends DAO {
         }
     }
 
-    public static void deleteFilm(int id)throws SQLException, ClassNotFoundException{
+    public static void deleteMember(int id)throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from MEMBER WHERE id_Member = ?") ){
             prepareStatement.setInt(1, id);
             prepareStatement.executeUpdate();
@@ -44,7 +44,7 @@ public class MemberDAO extends DAO {
 
     public static void main (String[] args){
         try {
-            MemberDAO.getFilms();
+            MemberDAO.getMember();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

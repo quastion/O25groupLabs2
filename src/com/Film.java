@@ -35,6 +35,18 @@ public class Film {
         this.placeStorage = placeStorage;
         this.typeOfFilm = typeOfFilm;
     }
+    public Film(int idFilm, int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, String typeOfFilm, int id_type_film) {
+        this.idFilm = idFilm;
+        this.priceFilm = priceFilm;
+        this.sensibility = sensibility;
+        this.numFrame = numFrame;
+        this.dateStartingSnapshot = dateStartingSnapshot;
+        this.dateManifestation = dateManifestation;
+        this.placeManifestation = placeManifestation;
+        this.placeStorage = placeStorage;
+        this.typeOfFilm = typeOfFilm;
+        this.idTypeOfFilm=id_type_film;
+    }
     public Film( int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, int idTypeOfFilm) {
         this.priceFilm = priceFilm;
         this.sensibility = sensibility;

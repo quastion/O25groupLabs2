@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class FrameDAO extends DAO {
 
-    public static List<Frame> getFilms() throws SQLException, ClassNotFoundException {
+    public static List<Frame> getFrame() throws SQLException, ClassNotFoundException {
         try( ResultSet rs = FrameDAO.getConnection().prepareStatement("SELECT * from Frame").executeQuery() ){
             ArrayList<Frame> frames = new ArrayList<>();
             while (rs.next()){
@@ -28,14 +28,14 @@ public class FrameDAO extends DAO {
         }
     }
 
-    public static void deleteFilm(int id)throws SQLException, ClassNotFoundException{
+    public static void deleteFrame(int id)throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = FilmDAO.getConnection().prepareStatement("DELETE from FRAME WHERE ID_FRAME = ?") ){
             prepareStatement.setInt(1, id);
             prepareStatement.executeUpdate();
         }
     }
 
-    public static void addFilm(Frame frame)throws SQLException, ClassNotFoundException{
+    public static void addFrame(Frame frame)throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = FilmDAO.getConnection().
                 prepareStatement("INSERT INTO FRAME VALUES (null, ?, ?, ?, ?)") ){
             prepareStatement.setDate(1, frame.getDateFrame());
@@ -45,18 +45,4 @@ public class FrameDAO extends DAO {
             prepareStatement.executeUpdate();
         }
     }
-
-    public static void main (String[] args){
-        try {
-            FrameDAO.getFilms();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-
 }

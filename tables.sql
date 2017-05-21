@@ -95,9 +95,9 @@ ALTER TABLE UserRating
 	ADD CONSTRAINT  XPKUserRating2 PRIMARY KEY (id_film);
 
 ALTER TABLE UserRating
-	ADD (CONSTRAINT R_8 FOREIGN KEY (id_user) REFERENCES User (id_user) ON DELETE SET NULL);
+	ADD (CONSTRAINT R_8 FOREIGN KEY (id_user) REFERENCES User (id_user) ON DELETE CASCADE);
 ALTER TABLE UserRating
-	ADD (CONSTRAINT R_9 FOREIGN KEY (id_film) REFERENCES Film (id_film) ON DELETE SET NULL);
+	ADD (CONSTRAINT R_9 FOREIGN KEY (id_film) REFERENCES Film (id_film) ON DELETE CASCADE);
 //===========================================================
 
 CREATE UNIQUE INDEX XPKDeveloper ON Developer

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class PhotoDAO extends DAO {
 
-    public static List<Photo> getFilms() throws SQLException, ClassNotFoundException {
+    public static List<Photo> getPhoto() throws SQLException, ClassNotFoundException {
         try( ResultSet rs = PhotoDAO.getConnection().createStatement().executeQuery("SELECT P.ID_PHOTO, P.DATE_PRINTING, P.SIZE_, P.NUMBER_, P.PRICE_PHOTO, P.PLACE_PHOTO, D.NAME, B.TYPE_PAPER, P.ID_FRAME, P.ID_FILM from PHOTO P, DEVELOPER D, PAPER B WHERE P.ID_DEVELOPER = D.ID_DEVELOPER AND P.ID_PAPER = B.ID_PAPER") ){
             ArrayList<Photo> photos = new ArrayList<>();
             while (rs.next()){
@@ -33,7 +33,7 @@ public class PhotoDAO extends DAO {
         }
     }
 
-    public static void deleteFilm(int id) throws SQLException, ClassNotFoundException {
+    public static void deletePhoto(int id) throws SQLException, ClassNotFoundException {
         try(PreparedStatement prepareStatement = PhotoDAO.getConnection().prepareStatement("DELETE from Photo WHERE ID_PHOTO = ?") ){
             prepareStatement.setInt(1, id);
             prepareStatement.executeUpdate();

@@ -35,6 +35,7 @@
                 <td>Тип пленки</td>
                 <td>Рейтинг</td>
                 <td>Рейтинг пользователя</td>
+                <td>Редактировать</td>
                 <td>Удалить</td>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
@@ -84,6 +85,7 @@
                             <label title="bad" for="star-0"></label>
                         </div>
                     </td>
+                    <td><a href="/edit?table=film&id=${post.idFilm}">Редактировать</a> </td>
                     <td><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
                 </tr>
             </c:forEach>

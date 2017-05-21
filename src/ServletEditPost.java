@@ -12,8 +12,8 @@ import java.sql.SQLException;
 /**
  * Created by fil-n on 25.04.17.
  */
-@WebServlet(name = "ServletAddPost", urlPatterns = "/addpost")
-public class ServletAddPost extends HttpServlet {
+@WebServlet(name = "ServletEditPost", urlPatterns = "/editpost")
+public class ServletEditPost extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String table = String.valueOf(request.getParameter("table"));
@@ -23,8 +23,11 @@ public class ServletAddPost extends HttpServlet {
                         Integer.valueOf(request.getParameter("numFrame")), Date.valueOf(request.getParameter("dateStartingSnapshot")),
                         Date.valueOf(request.getParameter("dateManifestation")), request.getParameter("placeManifestation"),
                         request.getParameter("placeStorage"), Integer.valueOf(request.getParameter("idTypeOfFilm")) );
+                film.setIdFilm(Integer.valueOf(request.getParameter("id")));
 
-                FilmDAO.addFilm(film);
+                System.out.println(film);
+                FilmDAO.undateFilm(film);
+
             }
             if (table.equals("member")){
                 //String pr = request.getParameter("idTypeOfFilm");
