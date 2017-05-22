@@ -63,41 +63,27 @@ CREATE TABLE TypeOfFilm
 );
 
 //======================================================== Добавление новых таблиц, все что связано с юзером
-CREATE TABLE User
-(
-	id_user      INTEGER NOT NULL ,
-	Login            VARCHAR2(100) NOT NULL,
-	Password      VARCHAR2(100) NOT NULL,
-	Access      VARCHAR2(5) NOT NULL
+
+CREATE TABLE userRating(
+  id_user Integer NOT NULL,
+  ID_FILM Integer NOT NULL,
+  rating Integer
 );
 
-CREATE UNIQUE INDEX XPKUser ON User
-(id_user   ASC);
+CREATE INDEX IX_Relationship1 ON userRating (id_user);
 
-ALTER TABLE User
-	ADD CONSTRAINT  XPKUser PRIMARY KEY (id_user);
-
-CREATE TABLE UserRating
-(
-	id_user   INTEGER NOT NULL ,
-	id_film   INTEGER NOT NULL ,
-	rating    INTEGER NULL
+CREATE TABLE UserTable(
+  id_user Integer NOT NULL,
+  lgn VARCHAR2(100 ) NOT NULL,
+  psw VARCHAR2(100 ) NOT NULL,
+  accss VARCHAR2(20 ) NOT NULL
 );
 
-CREATE UNIQUE INDEX XPKUserRating1 ON UserRating
-(id_user   ASC);
-CREATE UNIQUE INDEX XPKUserRating2 ON UserRating
-(id_film   ASC);
+ALTER TABLE UserTable ADD CONSTRAINT Key2 PRIMARY KEY (id_user);
 
-ALTER TABLE UserRating
-	ADD CONSTRAINT  XPKUserRating1 PRIMARY KEY (id_user);
-ALTER TABLE UserRating
-	ADD CONSTRAINT  XPKUserRating2 PRIMARY KEY (id_film);
+ALTER TABLE userRating ADD CONSTRAINT Relationship1 FOREIGN KEY (id_user) REFERENCES UserTable (id_user) ON DELETE CASCADE;
 
-ALTER TABLE UserRating
-	ADD (CONSTRAINT R_8 FOREIGN KEY (id_user) REFERENCES User (id_user) ON DELETE CASCADE);
-ALTER TABLE UserRating
-	ADD (CONSTRAINT R_9 FOREIGN KEY (id_film) REFERENCES Film (id_film) ON DELETE CASCADE);
+ALTER TABLE userRating ADD CONSTRAINT Relationship2 FOREIGN KEY (ID_FILM) REFERENCES FILM (ID_FILM) ON DELETE CASCADE;
 //===========================================================
 
 CREATE UNIQUE INDEX XPKDeveloper ON Developer
