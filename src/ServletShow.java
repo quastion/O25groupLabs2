@@ -1,7 +1,4 @@
-import com.FilmDAO;
-import com.FrameDAO;
-import com.MemberDAO;
-import com.PhotoDAO;
+import com.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,10 +13,15 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        if (!Access.isRead()) {
+            response.sendRedirect("/er?code=noPrivilege");
+            return;
+        }
+        request.setAttribute("edit", Access.isEdit() );
+        request.setAttribute("delete", Access.isDelete() );
         String table = String.valueOf(request.getParameter("table"));
         try {
             if (table.equals("film")){
-
                 request.setAttribute("posts", FilmDAO.getFilms());
                 request.getRequestDispatcher("WEB-INF/filmShow.jsp").forward(request, response);
             }

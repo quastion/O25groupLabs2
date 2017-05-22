@@ -32,8 +32,12 @@
                 <td>Производитель</td>
                 <td>Бумага</td>
                 <td>Кадр</td>
-                <td>Редактировать</td>
-                <td>Удалить</td>
+                <c:if test="${edit == true}">
+                    <td>Редактировать</td>
+                </c:if>
+                <c:if test="${delete == true}">
+                    <td>Удалить</td>
+                </c:if>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
                 <tr>
@@ -45,8 +49,12 @@
                     <td>${post.developer}</td>
                     <td>${post.paper}</td>
                     <td>Тема: ${post.frame.theme}, место: ${post.frame.placeFrame}, дата: ${post.frame.dateFrame}</td>
-                    <td><a href="/edit?table=photo&id=${post.idPhoto}">Редактировать</a> </td>
-                    <td><a href="/delete?table=photo&id=${post.idPhoto}">Удалить</a> </td>
+                    <c:if test="${edit == true}">
+                        <td><a href="/edit?table=photo&id=${post.idPhoto}">Редактировать</a> </td>
+                    </c:if>
+                    <c:if test="${delete == true}">
+                        <td><a href="/delete?table=photo&id=${post.idPhoto}">Удалить</a> </td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>

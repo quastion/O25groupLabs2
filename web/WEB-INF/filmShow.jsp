@@ -35,8 +35,14 @@
                 <td>Тип пленки</td>
                 <td>Рейтинг</td>
                 <td>Рейтинг пользователя</td>
-                <td>Редактировать</td>
-                <td>Удалить</td>
+                <c:if test="${edit == true}">
+                    <td>Редактировать</td>
+                </c:if>
+                <c:if test="${delete == true}">
+                    <td>Удалить</td>
+                </c:if>
+
+
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
                 <tr>
@@ -85,8 +91,12 @@
                             <label title="bad" for="star-0"></label>
                         </div>
                     </td>
-                    <td><a href="/edit?table=film&id=${post.idFilm}">Редактировать</a> </td>
-                    <td><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
+                    <c:if test="${edit == true}">
+                        <td><a href="/edit?table=film&id=${post.idFilm}">Редактировать</a> </td>
+                    </c:if>
+                    <c:if test="${delete == true}">
+                        <td><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>

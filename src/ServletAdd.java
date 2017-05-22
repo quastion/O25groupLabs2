@@ -1,3 +1,4 @@
+import com.Access;
 import com.FilmDAO;
 import com.FrameDAO;
 import com.PhotoDAO;
@@ -15,6 +16,10 @@ public class ServletAdd extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        if (!Access.isAdd()) {
+            response.sendRedirect("/er?code=noPrivilege");
+            return;
+        }
         String table = String.valueOf(request.getParameter("table"));
         try {
             if (table.equals("film")){

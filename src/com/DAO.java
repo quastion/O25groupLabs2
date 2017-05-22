@@ -9,9 +9,13 @@ import java.util.Locale;
  * Created by fil-n on 22.04.17.
  */
 public abstract class DAO {
+    private static Connection connection;
     public static Connection getConnection () throws ClassNotFoundException, SQLException {
-        Locale.setDefault(Locale.ENGLISH);
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        return  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orc","USER_NETCRACKER","123");
+        if (connection == null) {
+            Locale.setDefault(Locale.getDefault());
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orc","USER_NETCRACKER","123");
+        }
+        return  connection;
     }
 }

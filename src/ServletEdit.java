@@ -1,7 +1,4 @@
-import com.FilmDAO;
-import com.FrameDAO;
-import com.MemberDAO;
-import com.PhotoDAO;
+import com.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,6 +13,10 @@ public class ServletEdit extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        if (!Access.isEdit()) {
+            response.sendRedirect("/er?code=noPrivilege");
+            return;
+        }
         String table = request.getParameter("table");
         try {
             if (table.equals("film")){

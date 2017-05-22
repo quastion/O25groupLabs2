@@ -29,8 +29,12 @@
                 <td>Хранение</td>
                 <td>Тема</td>
                 <td>Пленка</td>
-                <td>Редактировать</td>
-                <td>Удалить</td>
+                <c:if test="${edit == true}">
+                    <td>Редактировать</td>
+                </c:if>
+                <c:if test="${delete == true}">
+                    <td>Удалить</td>
+                </c:if>
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
                 <tr>
@@ -43,8 +47,12 @@
                         дата съемки: ${post.film.dateStartingSnapshot},
                         место проявления: ${post.film.placeManifestation}
                     </td>
-                    <td><a href="/edit?table=frame&id=${post.idFrame}">Редактировать</a></td>
-                    <td><a href="/delete?table=frame&id=${post.idFrame}">Удалить</a></td>
+                    <c:if test="${edit == true}">
+                        <td><a href="/edit?table=frame&id=${post.idFrame}">Редактировать</a></td>
+                    </c:if>
+                    <c:if test="${delete == true}">
+                        <td><a href="/delete?table=frame&id=${post.idFrame}">Удалить</a></td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>
