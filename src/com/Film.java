@@ -1,6 +1,9 @@
 package com;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Created by Ник on 01.03.17.
@@ -16,15 +19,11 @@ public class Film {
     private String placeStorage;
     private int idTypeOfFilm;
     private String typeOfFilm;
+    private double rating;
 
     public Film() { }
 
-    public Film(String placeManifestation, String placeStorage) {
-        this.placeManifestation = placeManifestation;
-        this.placeStorage = placeStorage;
-    }
-
-    public Film(int idFilm, int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, String typeOfFilm) {
+    public Film(int idFilm, int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, String typeOfFilm) throws SQLException, ClassNotFoundException {
         this.idFilm = idFilm;
         this.priceFilm = priceFilm;
         this.sensibility = sensibility;
@@ -34,8 +33,9 @@ public class Film {
         this.placeManifestation = placeManifestation;
         this.placeStorage = placeStorage;
         this.typeOfFilm = typeOfFilm;
+        setRating();
     }
-    public Film(int idFilm, int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, String typeOfFilm, int id_type_film) {
+    public Film(int idFilm, int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, String typeOfFilm, int id_type_film) throws SQLException, ClassNotFoundException {
         this.idFilm = idFilm;
         this.priceFilm = priceFilm;
         this.sensibility = sensibility;
@@ -46,8 +46,9 @@ public class Film {
         this.placeStorage = placeStorage;
         this.typeOfFilm = typeOfFilm;
         this.idTypeOfFilm=id_type_film;
+        setRating();
     }
-    public Film( int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, int idTypeOfFilm) {
+    public Film( int priceFilm, int sensibility, int numFrame, Date dateStartingSnapshot, Date dateManifestation, String placeManifestation, String placeStorage, int idTypeOfFilm) throws SQLException, ClassNotFoundException {
         this.priceFilm = priceFilm;
         this.sensibility = sensibility;
         this.numFrame = numFrame;
@@ -56,6 +57,7 @@ public class Film {
         this.placeManifestation = placeManifestation;
         this.placeStorage = placeStorage;
         this.idTypeOfFilm = idTypeOfFilm;
+        setRating();
     }
 
     public Film(int idFilm, int sensibility, int numFrame, Date dateStartingSnapshot, String placeManifestation) {
@@ -161,4 +163,20 @@ public class Film {
     public void setTypeOfFilm(String typeOfFilm) {
         this.typeOfFilm = typeOfFilm;
     }
+
+    public double getRating() throws SQLException, ClassNotFoundException {
+            setRating();
+            return this.rating;
+    }
+
+    public void setRating() throws SQLException, ClassNotFoundException {
+        try(PreparedStatement ps = DAO.getConnection().prepareStatement("SELECT AVG(U.RATING) FROM USERRATING U WHERE ID_FILM = ?")){
+            ps.setInt(1, this.getIdFilm());
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next())
+                this.rating= rs.getDouble(1);
+        }
+
+        }
 }

@@ -10,6 +10,14 @@
 <html>
 <head>
     <title>Пленки</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+                $()
+            }
+        );
+    </script>
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
@@ -45,7 +53,7 @@
 
             </tr><!-- Table Header -->
             <c:forEach items="${posts}" var="post">
-                <tr>
+                <tr >
                     <td>${post.priceFilm}</td>
                     <td>${post.sensibility}</td>
                     <td>${post.numFrame}</td>
@@ -55,40 +63,25 @@
                     <td>${post.placeStorage}</td>
                     <td>${post.typeOfFilm}</td>
                     <%--<td>${post.rating}</td>--%>
-                    <td>
-                        <div id="reviewStars-input" style="width:150px;">
-                            <input id="star-4" type="radio" name="reviewStars"/>
-                            <label title="gorgeous" for="star-4"></label>
-
-                            <input id="star-3" type="radio" name="reviewStars"/>
-                            <label title="good" for="star-3"></label>
-
-                            <input id="star-2" type="radio" name="reviewStars"/>
-                            <label title="regular" for="star-2"></label>
-
-                            <input id="star-1" type="radio" name="reviewStars"/>
-                            <label title="poor" for="star-1"></label>
-
-                            <input id="star-0" type="radio" name="reviewStars"/>
-                            <label title="bad" for="star-0"></label>
-                        </div>
+                    <td id = "rating_${post.idFilm}">
+                        ${post.rating} / 5
                     </td>
-                    <td>
-                        <div id="1reviewStars-input" style="width:150px;">
-                            <input id="1star-4" type="radio" name="reviewStars"/>
-                            <label title="gorgeous" for="star-4"></label>
+                    <td id="${post.idFilm}">
+                        <div class="reviewStars-input" style="width:150px;">
+                            <input id="star-4_${post.idFilm}" class="star-4" type="radio" name="reviewStars"  onclick="saveUsersRating(5, this.parentElement.parentElement.id);"/>
+                            <label title="gorgeous" for="star-4_${post.idFilm}"></label>
 
-                            <input id="1star-3" type="radio" name="reviewStars"/>
-                            <label title="good" for="star-3"></label>
+                            <input id="star-3_${post.idFilm}" class="star-3" type="radio" name="reviewStars" onclick="saveUsersRating(4, this.parentElement.parentElement.id);"/>
+                            <label title="good" for="star-3_${post.idFilm}"></label>
 
-                            <input id="1star-2" type="radio" name="reviewStars"/>
-                            <label title="regular" for="star-2"></label>
+                            <input id="star-2_${post.idFilm}" class="star-2" type="radio" name="reviewStars" onclick="saveUsersRating(3, this.parentElement.parentElement.id);"/>
+                            <label title="regular" for="star-2_${post.idFilm}"></label>
 
-                            <input id="1star-1" type="radio" name="reviewStars"/>
-                            <label title="poor" for="star-1"></label>
+                            <input id="star-1_${post.idFilm}" class="star-1" type="radio" name="reviewStars" onclick="saveUsersRating(2, this.parentElement.parentElement.id);"/>
+                            <label title="poor" for="star-1_${post.idFilm}"></label>
 
-                            <input id="1star-0" type="radio" name="reviewStars"/>
-                            <label title="bad" for="star-0"></label>
+                            <input id="star-0_${post.idFilm}" type="radio" class="star-0" name="reviewStars" onclick="saveUsersRating(1, this.parentElement.parentElement.id);"/>
+                            <label title="bad" for="star-0_${post.idFilm}"></label>
                         </div>
                     </td>
                     <c:if test="${edit == true}">
@@ -103,6 +96,32 @@
     </div>
     <div id = "footer"></div>
 </div>
+
+<script>
+    function saveUsersRating(mark, idFilm1) {
+
+        console.log(mark);
+        var url = "userrating?mark=" + mark+ "&idUser=" + ${idUser} + "&idFilm=" + idFilm1;
+        console.log(url);
+
+        $.ajax(
+            {
+                type: 'POST',
+                data: {mark:mark, idUser: ${idUser}, idFilm: idFilm1},
+                url: 'userrating',
+                success: function (result) {
+                    $('#rating_'+idFilm1).html(result);
+
+                }
+            }
+        );
+
+
+        //req = new XMLHttpRequest();
+        //req.open("GET", url, false);
+        //req.send(null);
+    }
+</script>
 
 </body>
 </html>

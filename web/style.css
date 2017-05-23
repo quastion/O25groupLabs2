@@ -60,7 +60,7 @@ h1:hover {
 }
 
 li > a:hover {
-    background:#D43737;/*добавляем эффект при наведении*/
+    background:f;/*добавляем эффект при наведении*/
 }
 li {
     float:left; /*Размещаем список горизонтально для реализации меню*/
@@ -292,11 +292,11 @@ auth-table {
 
 
 /*sprite with stars*/
-#reviewStars-input input:checked ~ label, #reviewStars-input label, #reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
-    background: url(WEB-INF/stars.png) no-repeat;
+div.reviewStars-input input:checked ~ label, div.reviewStars-input label, div.reviewStars-input label:hover, div.reviewStars-input label:hover ~ label {
+    background: url(stars.png) no-repeat;
 }
 
-#reviewStars-input {
+div.reviewStars-input {
 
     /*fix floating problems*/
     overflow: hidden;
@@ -307,7 +307,7 @@ auth-table {
     float: left;
 }
 
-#reviewStars-input input {
+div.reviewStars-input input {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
 
@@ -319,13 +319,13 @@ auth-table {
     z-index: 0;
 }
 
-#reviewStars-input input:checked ~ label {
+div.reviewStars-input input:checked ~ label {
     background-position: 0 -20px;
     height: 20px;
     width: 20px;
 }
 
-#reviewStars-input label {
+div.reviewStars-input label {
     background-position: 0 0;
     height: 20px;
     width: 20px;
@@ -337,28 +337,28 @@ auth-table {
     z-index: 1;
 }
 
-#reviewStars-input label:hover, #reviewStars-input label:hover ~ label {
+div.reviewStars-input label:hover, div.reviewStars-input label:hover ~ label {
     background-position: 0 -20px;
     height: 20px;
     width: 20px;
 }
 
-#reviewStars-input #star-0 {
+div.reviewStars-input input.star-0 {
     left: 0px;
 }
-#reviewStars-input #star-1 {
+div.reviewStars-input input.star-1 {
     left: 33px;
 }
-#reviewStars-input #star-2 {
+div.reviewStars-input input.star-2 {
     left: 63px;
 }
-#reviewStars-input #star-3 {
+div.reviewStars-input input.star-3 {
     left: 93px;
 }
-#reviewStars-input #star-4 {
+div.reviewStars-input input.star-4 {
     left: 123px;
 }
-#reviewStars-input #star-5 {
+div.reviewStars-input input.star-5 {
     left: 153px;
 }
 

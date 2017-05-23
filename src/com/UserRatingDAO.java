@@ -23,13 +23,34 @@ public class UserRatingDAO extends DAO {
         }
     }
 
-    public static void addUserRating(UserRating userRating) throws SQLException, ClassNotFoundException{
+    public static void addUserRating(UserRating r) throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = UserRatingDAO.getConnection().
-                prepareStatement("INSERT INTO USERRATING VALUES (?, ?, ?)") ){
-            prepareStatement.setInt(1, userRating.getIdUser());
-            prepareStatement.setInt(2, userRating.getIdFilm());
-            prepareStatement.setInt(3, userRating.getRating());
-            prepareStatement.executeUpdate();
+                prepareStatement("SELECT * FROM  USERRATING WHERE ID_USER= ? AND ID_FILM=?") ){
+            prepareStatement.setInt(1, r.getIdUser());
+            prepareStatement.setInt(2, r.getIdFilm());
+
+            ResultSet rs = prepareStatement.executeQuery();
+            if (rs.next()){
+                try(PreparedStatement prepareStatement2 = DAO.getConnection().
+                        prepareStatement("UPDATE USERRATING set RATING = ? WHERE ID_USER = ? AND ID_FILM =?") ){
+
+                    System.out.println("upd");
+                    prepareStatement2.setInt(1, r.getRating());
+                    prepareStatement2.setInt(2, r.getIdUser());
+                    prepareStatement2.setInt(3, r.getIdFilm());
+
+                    prepareStatement2.executeUpdate();
+                }
+            } else{
+                try(PreparedStatement prepareStatement1 = DAO.getConnection().
+                        prepareStatement("INSERT INTO USERRATING VALUES ( ?, ?, ?)") ){
+
+                    prepareStatement1.setInt(1, r.getIdUser());
+                    prepareStatement1.setInt(2, r.getIdFilm());
+                    prepareStatement1.setInt(3, r.getRating());
+                    prepareStatement1.executeUpdate();
+                }
+            }
         }
     }
 }

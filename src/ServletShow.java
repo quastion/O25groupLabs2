@@ -17,6 +17,7 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
             response.sendRedirect("/er?code=noPrivilege");
             return;
         }
+        request.setAttribute("idUser", Access.getIdUser() );
         request.setAttribute("edit", Access.isEdit() );
         request.setAttribute("delete", Access.isDelete() );
         String table = String.valueOf(request.getParameter("table"));

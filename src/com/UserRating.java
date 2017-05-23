@@ -1,6 +1,8 @@
 package com;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class UserRating {
     private int idUser;
@@ -17,6 +19,16 @@ public class UserRating {
 
     public int getIdUser() {
         return idUser;
+    }
+
+    public static void saveUserRating(UserRating r) throws SQLException, ClassNotFoundException {
+        try(PreparedStatement prepareStatement = DAO.getConnection().
+                prepareStatement("INSERT INTO USERRATING VALUES ( ?, ?, ?)") ){
+            prepareStatement.setInt(1, r.getIdUser());
+            prepareStatement.setInt(2, r.getIdFilm());
+            prepareStatement.setInt(3, r.getRating());
+            prepareStatement.executeUpdate();
+        }
     }
 
     public void setIdUser(int idUser) {
