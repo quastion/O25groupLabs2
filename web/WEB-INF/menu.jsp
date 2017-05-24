@@ -16,8 +16,9 @@
 <body>
 <div>
   <div id = "header">
-    <h1>Фототека</h1>
-  </div>
+
+  <h1>Фототека</h1>
+</div>
   <div id = "content">
     <ul>
       <li><a href="#">Показать</a>
@@ -36,6 +37,8 @@
           <li><a href="/add?table=member">Участники</a></li>
         </ul>
       </li>
+      <li ><a href="/exit">Выход</a></li>
+
     </ul>
   </div>
   <div id = "footer"></div>

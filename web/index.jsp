@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td>Пароль</td>
-          <td><input name ="password" type="text"></td>
+          <td><input name ="password" type="password"></td>
         </tr>
       </table>
       <div style="text-align: center;"><a><input type="submit" value="Вход"></a></div>

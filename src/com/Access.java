@@ -45,6 +45,7 @@ public class Access {
     }
 
     public static void exit() {
+        idUser = 0;
         read = false;
         add = false;
         edit = false;
