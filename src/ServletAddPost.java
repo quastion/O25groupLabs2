@@ -18,11 +18,12 @@ public class ServletAddPost extends HttpServlet {
         try {
             String table = String.valueOf(request.getParameter("table"));
             if (table.equals("film")){
+                System.out.println(table);
                 Film film = new Film(Integer.valueOf(request.getParameter("priceFilm")), Integer.valueOf(request.getParameter("sensibility")),
                         Integer.valueOf(request.getParameter("numFrame")), Date.valueOf(request.getParameter("dateStartingSnapshot")),
                         Date.valueOf(request.getParameter("dateManifestation")), request.getParameter("placeManifestation"),
                         request.getParameter("placeStorage"), Integer.valueOf(request.getParameter("idTypeOfFilm")) );
-
+                System.out.println(film);
                 FilmDAO.addFilm(film);
             }
             if (table.equals("member")){

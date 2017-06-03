@@ -35,7 +35,7 @@
                     <td>Место проявки</td>
                     <td>Хранение</td>
                     <td>Тип пленки</td>
-                </tr><!-- Table Header -->
+                </tr>
 
                 <tr>
                     <td><input name ="priceFilm" type="number"></td>
@@ -57,7 +57,6 @@
             </table>
         </form>
     </div>
-    <div id = "footer"></div>
 </div>
 </body>
 </html>

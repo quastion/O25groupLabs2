@@ -23,6 +23,16 @@ public class UserRatingDAO extends DAO {
         }
     }
 
+    public static int getUserRating(int idUser, int idFilm) throws SQLException, ClassNotFoundException {
+        List<UserRating> ur_list = UserRatingDAO.getUserRatings();
+        for (UserRating ur :ur_list ) {
+            if (ur.getIdFilm() == idUser && ur.getIdFilm() == idFilm)
+                return ur.getRating();
+        }
+        return -1;
+    }
+
+
     public static void addUserRating(UserRating r) throws SQLException, ClassNotFoundException{
         try(PreparedStatement prepareStatement = UserRatingDAO.getConnection().
                 prepareStatement("SELECT * FROM  USERRATING WHERE ID_USER= ? AND ID_FILM=?") ){

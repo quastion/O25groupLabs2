@@ -11,14 +11,8 @@
 <head>
     <title>Пленки</title>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script>
-        $(document).ready(
-            function () {
-                $()
-            }
-        );
-    </script>
-    <link rel="stylesheet" type="text/css" href="../style.css" />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
@@ -29,10 +23,14 @@
     <div id = "content">
         <ul>
             <li><a href = "/menu">Главная</a> </li>
+            <c:if test="${delete == true}">
+                <li><input type="button" onclick="deleteRows(); return false;" value="Удалить" /> </li>
+            </c:if>
         </ul>
-        <table class="simple-little-table"
+        <table  id = "tbl" class="simple-little-table"
                style = "padding: 10px 0 10px 0;" cellspacing='0'>
             <tr>
+                <td>X</td>
                 <td>Цена</td>
                 <td>Чувств.</td>
                 <td>Количество</td>
@@ -46,14 +44,13 @@
                 <c:if test="${edit == true}">
                     <td>Редактировать</td>
                 </c:if>
-                <c:if test="${delete == true}">
-                    <td>Удалить</td>
-                </c:if>
 
 
-            </tr><!-- Table Header -->
+
+            </tr>
             <c:forEach items="${posts}" var="post">
-                <tr >
+                <tr id ="${post.idFilm}">
+                    <td><input  type="checkbox"/> </td>
                     <td>${post.priceFilm}</td>
                     <td>${post.sensibility}</td>
                     <td>${post.numFrame}</td>
@@ -62,7 +59,7 @@
                     <td>${post.placeManifestation}</td>
                     <td>${post.placeStorage}</td>
                     <td>${post.typeOfFilm}</td>
-                    <%--<td>${post.rating}</td>--%>
+
                     <td id = "rating_${post.idFilm}">
                         ${post.rating} / 5
                     </td>
@@ -87,9 +84,6 @@
                     <c:if test="${edit == true}">
                         <td><a href="/edit?table=film&id=${post.idFilm}">Редактировать</a> </td>
                     </c:if>
-                    <c:if test="${delete == true}">
-                        <td><a href="/delete?table=film&id=${post.idFilm}">Удалить</a> </td>
-                    </c:if>
                 </tr>
             </c:forEach>
         </table>
@@ -99,11 +93,6 @@
 
 <script>
     function saveUsersRating(mark, idFilm1) {
-
-        console.log(mark);
-        var url = "userrating?mark=" + mark+ "&idUser=" + ${idUser} + "&idFilm=" + idFilm1;
-        console.log(url);
-
         $.ajax(
             {
                 type: 'POST',
@@ -115,11 +104,16 @@
                 }
             }
         );
+    }
+    t = document.getElementById('tbl');
+    function deleteRows() {
+        arDelete = new Array();
+        for (var i =1 ;i< t.rows.length;i++){
+             if (t.rows[i].cells[0].childNodes[0].checked == true)
+                arDelete.push(document.getElementById('tbl').rows[i].id);
 
-
-        //req = new XMLHttpRequest();
-        //req.open("GET", url, false);
-        //req.send(null);
+        }
+        document.location.href='/delete?table=film&id='+arDelete.toString();
     }
 </script>
 
