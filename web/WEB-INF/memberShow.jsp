@@ -20,9 +20,15 @@
     </div>
     <div id = "content">
         <ul>
-            <li><a href = "/menu">Главная</a> </li>
+            <li>
+                <a href = "/menu">Главная</a>
+            </li>
+            <li>
+                <input id ="finder" type="text" oninput="findRecords(value);"/>
+            </li>
         </ul>
-        <table class="simple-little-table" style = "padding: 10px 0 10px 0;"  cellspacing='0'>
+        <ul>
+        <table id="tbl" class="simple-little-table"  cellspacing='0'>
             <tr>
                 <td>Фамилия</td>
                 <td>Имя</td>
@@ -48,9 +54,30 @@
                 </tr>
             </c:forEach>
         </table>
+        </ul>
     </div>
     <div id = "footer"></div>
 </div>
+
+
+<script>
+    t = document.getElementById('tbl');
+    function findRecords(name) {
+        if (name.length >= 1){
+            for (var i =1 ;i< t.rows.length;i++){
+                if (t.rows[i].cells[0].innerHTML.substring(0,name.length) == name)
+                    t.rows[i].hidden = false;
+                else
+                    t.rows[i].hidden = true;
+            }
+        }
+        else {
+            for (var i = 1; i < t.rows.length; i++)
+                t.rows[i].hidden = false;
+
+        }
+    }
+</script>
 
 </body>
 </html>

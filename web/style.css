@@ -390,3 +390,6 @@ div.reviewStars-input input.star-5 {
     background: #41874e;
     margin: 20px 100px 20px 0px;
 }
+input#finder {
+    margin: 15px;
+}
