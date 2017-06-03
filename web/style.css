@@ -1,3 +1,4 @@
+
 ul {
     list-style: none; /*убираем маркеры списка*/
     margin: 0; /*убираем отступы*/
@@ -55,7 +56,7 @@ h1:hover {
 }
 
 li > a:hover {
-    background:f;/*добавляем эффект при наведении*/
+    background:#f00000;/*добавляем эффект при наведении*/
 }
 li {
      float:left; /*Размещаем список горизонтально для реализации меню*/
@@ -284,9 +285,6 @@ auth-table {
 
 
 /*sprite with stars*/
-div.reviewStars-input input:checked ~ label, div.reviewStars-input label, div.reviewStars-input label:hover, div.reviewStars-input label:hover ~ label {
-    background: url(stars.png) no-repeat;
-}
 
 div.reviewStars-input {
 
@@ -392,4 +390,66 @@ div.reviewStars-input input.star-5 {
 }
 input#finder {
     margin: 15px;
+}
+
+.user-rating {
+    direction: rtl;
+    font-size: 20px;
+    unicode-bidi: bidi-override;
+    padding: 10px 30px;
+    display: inline-block;
+}
+.user-rating input {
+    opacity: 0;
+    position: relative;
+    left: -15px;
+    z-index: 2;
+    cursor: pointer;
+}
+.user-rating span.star:before {
+    color: #777777;
+    content:"ï€†";
+    /*padding-right: 5px;*/
+}
+.user-rating span.star {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    position: relative;
+    z-index: 1;
+}
+.user-rating span {
+    margin-left: -15px;
+}
+.user-rating span.star:before {
+    color: #777777;
+    content:"\f006";
+    /*padding-right: 5px;*/
+}
+.user-rating input:hover + span.star:before, .user-rating input:hover + span.star ~ span.star:before, .user-rating input:checked + span.star:before, .user-rating input:checked + span.star ~ span.star:before {
+    color: #ffd100;
+    content:"\f005";
+}
+
+.selected-rating{
+    color: #ffd100;
+    font-weight: bold;
+    font-size: 3em;
+}
+input[type="button"] {
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    background:#819A32; /*добавляем фон к пункту меню*/
+    color:#fff; /*меняем цвет ссылок*/
+    padding:0px 15px; /*добавляем отступ*/
+    font-family: arial; /*меняем шрифт*/
+    line-height:46px; /*ровняем меню по вертикали*/
+    display: block;
+    border-right: 0px solid #677B27; /*добавляем бордюр справа*/
+    border-left: 0px solid #677B27;
+    border-top: 0px solid #677B27;
+    border-bottom: 0px solid #677B27;
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
 }

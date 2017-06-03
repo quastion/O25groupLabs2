@@ -31,6 +31,23 @@ public class UserRatingDAO extends DAO {
         }
         return -1;
     }
+    public static ArrayList<UserRating>  getRatings(int id) throws SQLException, ClassNotFoundException {
+        try(PreparedStatement prepareStatement = PhotoDAO.getConnection().prepareStatement("SELECT * from USERRATING WHERE ID_USER = ?") ){
+            prepareStatement.setInt(1, id);
+            ResultSet rs = prepareStatement.executeQuery();
+
+            ArrayList<UserRating> userRatings = new ArrayList<>();
+            while (rs.next()){
+                userRatings.add(new UserRating(
+                        rs.getInt(1), rs.getInt(2),
+                        rs.getInt(3)
+                ));
+                System.out.println(rs.getInt(1)+"  "+rs.getInt(2)+"  "+
+                        rs.getInt(3));
+            }
+            return userRatings;
+        }
+    }
 
 
     public static void addUserRating(UserRating r) throws SQLException, ClassNotFoundException{

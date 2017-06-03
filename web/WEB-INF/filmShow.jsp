@@ -10,10 +10,16 @@
 <html>
 <head>
     <title>Пленки</title>
+    <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" >
+
 
     <link rel="stylesheet" type="text/css" href="style.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 </head>
 <body>
 <div>
@@ -24,7 +30,21 @@
         <ul>
             <li><a href = "/menu">Главная</a> </li>
             <c:if test="${delete == true}">
-                <li><input type="button" onclick="deleteRows(); return false;" value="Удалить" /> </li>
+                <li><input type="button" onclick="deleteRows(); return false;" value="Удалить" style="
+                    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+                    background:#819A32; /*добавляем фон к пункту меню*/
+                    color:#fff; /*меняем цвет ссылок*/
+                    padding:0px 15px; /*добавляем отступ*/
+                    font-family: arial; /*меняем шрифт*/
+                    line-height:46px; /*ровняем меню по вертикали*/
+                    display: block;
+                    border-right: 0px solid #677B27; /*добавляем бордюр справа*/
+                    border-left: 0px solid #677B27;
+                    border-top: 0px solid #677B27;
+                    border-bottom: 0px solid #677B27;
+                    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+                    -o-transition: all 0.3s 0.01s ease;
+                    -webkit-transition: all 0.3s 0.01s ease;"/> </li>
             </c:if>
         </ul>
         <table  id = "tbl" class="simple-little-table"
@@ -63,23 +83,37 @@
                     <td id = "rating_${post.idFilm}">
                         ${post.rating} / 5
                     </td>
-                    <td id="${post.idFilm}">
-                        <div class="reviewStars-input" style="width:150px;">
-                            <input id="star-4_${post.idFilm}" class="star-4" type="radio" name="reviewStars"  onclick="saveUsersRating(5, this.parentElement.parentElement.id);"/>
-                            <label title="gorgeous" for="star-4_${post.idFilm}"></label>
+                    <td id="${post.idFilm}" >
+                        <c:forEach items="${rat}" var="rat">
+                            <c:if test="${rat.idFilm == post.idFilm}">
+                                <c:set var="ratin" value="${rat.rating}" />
+                            </c:if>
+                        </c:forEach>
 
-                            <input id="star-3_${post.idFilm}" class="star-3" type="radio" name="reviewStars" onclick="saveUsersRating(4, this.parentElement.parentElement.id);"/>
-                            <label title="good" for="star-3_${post.idFilm}"></label>
+                        <form id="user-rating-form">
+                            <span class="user-rating">
+                                <input type="radio" name="rating" value="5"
+                                    <c:if test="${ratin == 5}"> checked </c:if>
+                                onclick="saveUsersRating(5, ${post.idFilm});"><span class="star"></span>
 
-                            <input id="star-2_${post.idFilm}" class="star-2" type="radio" name="reviewStars" onclick="saveUsersRating(3, this.parentElement.parentElement.id);"/>
-                            <label title="regular" for="star-2_${post.idFilm}"></label>
+                                <input type="radio" name="rating" value="4"
+                                    <c:if test="${ratin == 4}"> checked </c:if>
+                                onclick="saveUsersRating(4, ${post.idFilm});"><span class="star"></span>
 
-                            <input id="star-1_${post.idFilm}" class="star-1" type="radio" name="reviewStars" onclick="saveUsersRating(2, this.parentElement.parentElement.id);"/>
-                            <label title="poor" for="star-1_${post.idFilm}"></label>
+                                <input type="radio" name="rating" value="3"
+                                    <c:if test="${ratin == 3}"> checked </c:if>
+                                onclick="saveUsersRating(3, ${post.idFilm});"><span class="star"></span>
 
-                            <input id="star-0_${post.idFilm}" type="radio" class="star-0" name="reviewStars" onclick="saveUsersRating(1, this.parentElement.parentElement.id);"/>
-                            <label title="bad" for="star-0_${post.idFilm}"></label>
-                        </div>
+                                <input type="radio" name="rating" value="2"
+                                    <c:if test="${ratin == 2}"> checked </c:if>
+                                onclick="saveUsersRating(2, ${post.idFilm});"><span class="star"></span>
+
+                                <input type="radio" name="rating" value="1"
+                                    <c:if test="${ratin == 1}"> checked </c:if>
+                                onclick="saveUsersRating(1, ${post.idFilm});"><span class="star"></span>
+                            </span>
+                        </form>
+
                     </td>
                     <c:if test="${edit == true}">
                         <td><a href="/edit?table=film&id=${post.idFilm}">Редактировать</a> </td>
@@ -92,6 +126,12 @@
 </div>
 
 <script>
+
+    $('#user-rating-form').on('change','[name="rating"]',function(){
+        $('#selected-rating').text($('[name="rating"]:checked').val());
+    });
+
+
     function saveUsersRating(mark, idFilm1) {
         $.ajax(
             {

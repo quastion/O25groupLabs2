@@ -24,6 +24,7 @@ public class ServletShow extends javax.servlet.http.HttpServlet {
         try {
             if (table.equals("film")){
                 request.setAttribute("posts", FilmDAO.getFilms());
+                request.setAttribute("rat", UserRatingDAO.getRatings(Access.getIdUser()));
                 request.getRequestDispatcher("WEB-INF/filmShow.jsp").forward(request, response);
             }
             if (table.equals("frame")){

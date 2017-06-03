@@ -2,6 +2,7 @@ package com;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRating {
@@ -30,6 +31,7 @@ public class UserRating {
             prepareStatement.executeUpdate();
         }
     }
+
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
